@@ -50,9 +50,7 @@ class AppThemes {
   static final ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     primaryColor: AppColors.primaryDark,
-    primaryColorDark: AppColors.primaryVariantDark,
     scaffoldBackgroundColor: AppColors.backgroundDark,
-    dialogBackgroundColor: AppColors.surfaceDark,
     textTheme: const TextTheme(
       bodyLarge: TextStyle(color: AppColors.onBackgroundDark),
       bodyMedium: TextStyle(color: AppColors.onBackgroundDark),
@@ -80,11 +78,9 @@ class AppThemes {
     ),
     colorScheme: const ColorScheme.dark(
       primary: AppColors.primaryDark,
-      secondary: AppColors.secondaryDark,
       surface: AppColors.surfaceDark,
       error: AppColors.errorDark,
       onPrimary: AppColors.onPrimaryDark,
-      onSecondary: AppColors.onSecondaryDark,
       onSurface: AppColors.onSurfaceDark,
       onError: AppColors.onErrorDark,
     ),
