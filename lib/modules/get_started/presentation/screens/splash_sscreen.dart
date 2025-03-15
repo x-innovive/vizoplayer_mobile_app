@@ -5,6 +5,15 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 70),
+          child: Image.asset(
+            'assets/icons/app_icons/vizo_player.png',
+          ),
+        ),
+      ),
+    );
   }
 }

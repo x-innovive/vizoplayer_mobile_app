@@ -19,7 +19,7 @@ class AppColors {
 
   // Dark theme colors
   static const Color primaryDark = Color(0xFF342C2C);
-  static const Color backgroundDark = Color(0xFF141414);
+  static const Color backgroundDark = Color(0xFF0E0E0E);
   static const Color surfaceDark = Color(0xFF1D1D1D);
   static const Color errorDark = red;
   static const Color onPrimaryDark = Color(0xFFFBFFFF);
