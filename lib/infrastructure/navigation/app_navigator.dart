@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_skeleton/infrastructure/navigation/route_names.dart';
+import 'package:flutter_clean_skeleton/modules/get_started/presentation/screens/get_started_screen.dart';
 import 'package:flutter_clean_skeleton/modules/get_started/presentation/screens/nowhere_screen.dart';
 import 'package:flutter_clean_skeleton/modules/get_started/presentation/screens/splash_sscreen.dart';
 import 'package:flutter_clean_skeleton/modules/github_users/presentation/screens/github_users_screen.dart';
@@ -48,8 +49,8 @@ class AppNav {
     switch (name) {
       case RouteNames.splashScreen:
         return Container();
-      case RouteNames.githubUsersScreen:
-        return const GithubUsersScreen();
+      // case RouteNames.githubUsersScreen:
+      //   return const GithubUsersScreen();
       default:
         return Container();
     }
@@ -69,6 +70,12 @@ class AppNav {
         path: RouteNames.splashScreen,
         builder: (context, state) {
           return const SplashScreen();
+        },
+      ),
+      GoRoute(
+        path: RouteNames.getStartedScreen,
+        builder: (context, state) {
+          return const GetStartedScreen();
         },
       ),
     ],
