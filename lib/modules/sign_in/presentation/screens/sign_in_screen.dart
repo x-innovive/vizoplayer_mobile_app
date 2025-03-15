@@ -19,6 +19,8 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
+      resizeToAvoidBottomInset: false,
       body: SignInScreenBackground(
         title: "Sign In",
         padding: AppValues.paddingNormal,
@@ -28,7 +30,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
             horizontal: AppValues.paddingNormal,
           ),
           child: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
+            physics: const AlwaysScrollableScrollPhysics(),
             child: Column(
               children: [
                 const AppTextField(hint: 'Source Name'),

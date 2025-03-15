@@ -67,6 +67,8 @@ class AppTextField extends StatelessWidget {
           vertical: AppValues.paddingSmall - 2,
         ),
       ),
+      cursorColor: AppColors.red,
+      cursorWidth: 2,
     );
   }
 }
