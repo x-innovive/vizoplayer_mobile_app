@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_skeleton/infrastructure/navigation/route_names.dart';
+import 'package:flutter_clean_skeleton/modules/get_started/presentation/screens/nowhere_screen.dart';
+import 'package:flutter_clean_skeleton/modules/get_started/presentation/screens/splash_sscreen.dart';
 import 'package:flutter_clean_skeleton/modules/github_users/presentation/screens/github_users_screen.dart';
+import 'package:go_router/go_router.dart';
 
-class AppNavigator {
-  AppNavigator._();
+class AppNav {
+  AppNav._();
 
   /// This field hold the state of [Navigator] widget
   /// which manage a stack of pages in the application
@@ -51,4 +54,23 @@ class AppNavigator {
         return Container();
     }
   }
+
+  static final goRouter = GoRouter(
+    navigatorKey: navKey,
+    initialLocation: RouteNames.splashScreen,
+    routes: [
+      GoRoute(
+        path: '/',
+        builder: (context, state) {
+          return const NowhereScreen();
+        },
+      ),
+      GoRoute(
+        path: RouteNames.splashScreen,
+        builder: (context, state) {
+          return const SplashScreen();
+        },
+      ),
+    ],
+  );
 }

@@ -15,16 +15,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: AppNav.goRouter,
       title: AppStrings.appTitle,
       themeMode: ThemeMode.light,
       theme: AppThemes.darkTheme,
       darkTheme: AppThemes.darkTheme,
-      navigatorKey: AppNavigator.navKey,
+      // navigatorKey: AppNav.navKey,
       debugShowCheckedModeBanner: false,
-      initialRoute: RouteNames.githubUsersScreen,
-      onGenerateRoute: AppNavigator.generateRoutes,
-      scaffoldMessengerKey: AppNavigator.scaffoldMessengerKey,
+      // initialRoute: RouteNames.githubUsersScreen,
+      // onGenerateRoute: AppNav.generateRoutes,
+      scaffoldMessengerKey: AppNav.scaffoldMessengerKey,
     );
   }
 }
