@@ -1,8 +1,8 @@
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_clean_skeleton/infrastructure/network/api_urls.dart';
-import 'package:flutter_clean_skeleton/modules/github_users/data/data_sources/github_user_datasource.dart';
+import 'package:vizoplayer/infrastructure/network/api_urls.dart';
+import 'package:vizoplayer/modules/github_users/data/data_sources/github_user_datasource.dart';
 
 import '../../business/entity/github_user.dart';
 import '../../business/repositories/github_users_repository.dart';

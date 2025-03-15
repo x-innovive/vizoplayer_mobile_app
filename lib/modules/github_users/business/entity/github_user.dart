@@ -1,4 +1,4 @@
-import 'package:flutter_clean_skeleton/modules/github_users/data/models/github_user_model.dart';
+import 'package:vizoplayer/modules/github_users/data/models/github_user_model.dart';
 
 class GithubUser {
   int? id;

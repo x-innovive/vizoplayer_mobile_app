@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_skeleton/modules/github_users/presentation/providers/async_github_users.dart';
+import 'package:vizoplayer/modules/github_users/presentation/providers/async_github_users.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class GithubUsersScreen extends StatelessWidget {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_skeleton/infrastructure/navigation/route_names.dart';
-import 'package:flutter_clean_skeleton/modules/get_started/presentation/screens/get_started_screen.dart';
-import 'package:flutter_clean_skeleton/modules/get_started/presentation/screens/nowhere_screen.dart';
-import 'package:flutter_clean_skeleton/modules/get_started/presentation/screens/splash_sscreen.dart';
-import 'package:flutter_clean_skeleton/modules/github_users/presentation/screens/github_users_screen.dart';
+import 'package:vizoplayer/infrastructure/navigation/route_names.dart';
+import 'package:vizoplayer/modules/get_started/presentation/screens/get_started_screen.dart';
+import 'package:vizoplayer/modules/get_started/presentation/screens/nowhere_screen.dart';
+import 'package:vizoplayer/modules/get_started/presentation/screens/splash_sscreen.dart';
+import 'package:vizoplayer/modules/github_users/presentation/screens/github_users_screen.dart';
 import 'package:go_router/go_router.dart';
 
 class AppNav {

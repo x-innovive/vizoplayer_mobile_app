@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_clean_skeleton/core/resources/app_strings.dart';
-import 'package:flutter_clean_skeleton/infrastructure/navigation/app_navigator.dart';
-import 'package:flutter_clean_skeleton/infrastructure/navigation/route_names.dart';
+import 'package:vizoplayer/core/resources/app_strings.dart';
+import 'package:vizoplayer/infrastructure/navigation/app_navigator.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/themes/app_themes.dart';
@@ -16,15 +15,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      routerConfig: AppNav.goRouter,
+      theme: AppThemes.darkTheme,
       title: AppStrings.appTitle,
       themeMode: ThemeMode.light,
-      theme: AppThemes.darkTheme,
+      routerConfig: AppNav.goRouter,
       darkTheme: AppThemes.darkTheme,
-      // navigatorKey: AppNav.navKey,
       debugShowCheckedModeBanner: false,
-      // initialRoute: RouteNames.githubUsersScreen,
-      // onGenerateRoute: AppNav.generateRoutes,
       scaffoldMessengerKey: AppNav.scaffoldMessengerKey,
     );
   }

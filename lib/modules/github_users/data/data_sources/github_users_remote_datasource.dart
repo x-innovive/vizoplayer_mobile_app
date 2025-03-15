@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_clean_skeleton/modules/github_users/data/models/github_user_model.dart';
+import 'package:vizoplayer/modules/github_users/data/models/github_user_model.dart';
 
 import '../../business/entity/github_user.dart';
 import 'github_user_datasource.dart';

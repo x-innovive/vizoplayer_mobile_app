@@ -1,7 +1,7 @@
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter_clean_skeleton/core/use_cases/no_param.dart';
-import 'package:flutter_clean_skeleton/core/use_cases/async_use_case.dart';
+import 'package:vizoplayer/core/use_cases/no_param.dart';
+import 'package:vizoplayer/core/use_cases/async_use_case.dart';
 import '../../business/repositories/github_users_repository.dart';
 import '../../business/use_cases/get_github_user_use_case.dart';
 import '../../data/data_sources/github_user_datasource.dart';
