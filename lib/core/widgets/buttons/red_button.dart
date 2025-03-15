@@ -19,7 +19,7 @@ class RedButton extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.red,
         padding: const EdgeInsets.symmetric(
-          vertical: 12,
+          vertical: 14,
           horizontal: AppValues.paddingNormal,
         ),
         textStyle: const TextStyle(

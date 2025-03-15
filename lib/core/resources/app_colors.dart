@@ -29,5 +29,7 @@ class AppColors {
 
   /// Others
   static const borderColor = Color(0xFF3A3A3A);
+  static const filledColor = Color(0xFF1D1D1D);
   static const red = Color(0xFFDD0C13);
+  static const deepOrange = Color(0xFFF9A00E);
 }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:vizoplayer/core/widgets/buttons/red_button.dart';
+import 'package:vizoplayer/infrastructure/navigation/app_navigator.dart';
+import 'package:vizoplayer/infrastructure/navigation/route_names.dart';
+import 'package:vizoplayer/modules/sign_in/presentation/widgets/app_icon_app_bar.dart';
 
 import '../../../../core/resources/app_colors.dart';
 import '../../../../core/resources/app_values.dart';
@@ -11,6 +14,7 @@ class GetStartedScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: Column(
         children: [
           Expanded(
@@ -20,7 +24,12 @@ class GetStartedScreen extends StatelessWidget {
                 Image.asset(
                   width: MediaQuery.of(context).size.width,
                   'assets/images/diagonal_background_img.png',
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fitWidth,
+                ),
+                Positioned(
+                  left: 0,
+                  top: MediaQuery.of(context).padding.top + AppValues.paddingNormal,
+                  child: const AppIconAppBar(fullIcon: false),
                 ),
                 Positioned(
                   bottom: 0,
@@ -30,18 +39,19 @@ class GetStartedScreen extends StatelessWidget {
                     height: 100,
                     decoration: BoxDecoration(
                       gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            AppColors.backgroundDark.withValues(alpha: .1),
-                            AppColors.backgroundDark.withValues(alpha: .3),
-                            AppColors.backgroundDark.withValues(alpha: .5),
-                            AppColors.backgroundDark.withValues(alpha: .7),
-                            AppColors.backgroundDark.withValues(alpha: .9),
-                            AppColors.backgroundDark,
-                            AppColors.backgroundDark,
-                            AppColors.backgroundDark,
-                          ]),
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          AppColors.backgroundDark.withValues(alpha: .1),
+                          AppColors.backgroundDark.withValues(alpha: .3),
+                          AppColors.backgroundDark.withValues(alpha: .5),
+                          AppColors.backgroundDark.withValues(alpha: .7),
+                          AppColors.backgroundDark.withValues(alpha: .9),
+                          AppColors.backgroundDark,
+                          AppColors.backgroundDark,
+                          AppColors.backgroundDark,
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -84,7 +94,9 @@ class GetStartedScreen extends StatelessWidget {
                     width: double.infinity,
                     child: RedButton(
                       title: 'Get Started',
-                      onTap: () {},
+                      onTap: () {
+                        AppNav.goRouter.push(RouteNames.signInScreen);
+                      },
                     ),
                   ),
                 ],

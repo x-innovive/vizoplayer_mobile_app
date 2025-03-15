@@ -5,6 +5,7 @@ import 'package:vizoplayer/modules/get_started/presentation/screens/nowhere_scre
 import 'package:vizoplayer/modules/get_started/presentation/screens/splash_sscreen.dart';
 import 'package:vizoplayer/modules/github_users/presentation/screens/github_users_screen.dart';
 import 'package:go_router/go_router.dart';
+import 'package:vizoplayer/modules/sign_in/presentation/screens/sign_in_screen.dart';
 
 class AppNav {
   AppNav._();
@@ -76,6 +77,12 @@ class AppNav {
         path: RouteNames.getStartedScreen,
         builder: (context, state) {
           return const GetStartedScreen();
+        },
+      ),
+      GoRoute(
+        path: RouteNames.signInScreen,
+        builder: (context, state) {
+          return const SignInScreen();
         },
       ),
     ],
