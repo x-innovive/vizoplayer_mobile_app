@@ -6,6 +6,7 @@ import '../../../../core/widgets/buttons/outlined_button.dart';
 import '../../../../core/widgets/buttons/red_button.dart';
 import '../../../../core/widgets/texts/app_text_field.dart';
 import '../../../../core/widgets/texts/note_text.dart';
+import '../../../../infrastructure/navigation/app_nav.dart';
 import '../../../sign_in/presentation/providers/sign_in_providers.dart';
 import '../../../sign_in/presentation/widgets/signin_screen_background.dart';
 import '../../business/entity/server.dart';
@@ -20,8 +21,8 @@ class EditServerScreen extends ConsumerStatefulWidget {
 }
 
 class _EditServerScreenState extends ConsumerState<EditServerScreen> {
-  @override
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       // resizeToAvoidBottomInset: false,
@@ -84,8 +85,7 @@ class _EditServerScreenState extends ConsumerState<EditServerScreen> {
                       child: BorderedButton(
                         title: 'Cancel',
                         onTap: () {
-                          // AppNav.goRouter.push(RouteNames.serverListScreen);
-                          // AppNav.goRouter.pop();
+                          AppNav.goRouter.pop();
                         },
                       ),
                     ),
@@ -94,8 +94,7 @@ class _EditServerScreenState extends ConsumerState<EditServerScreen> {
                       child: RedButton(
                         title: 'Add Server',
                         onTap: () {
-                          // AppNav.goRouter.push(RouteNames.serverListScreen);
-                          // AppNav.goRouter.pop();
+                          AppNav.goRouter.pop();
                         },
                       ),
                     ),
