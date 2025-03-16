@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:vizoplayer/core/resources/app_values.dart';
 import 'package:vizoplayer/core/widgets/buttons/red_button.dart';
 import 'package:vizoplayer/core/widgets/texts/app_text_field.dart';
+import 'package:vizoplayer/modules/sign_in/presentation/providers/sign_in_providers.dart';
 import 'package:vizoplayer/modules/sign_in/presentation/widgets/signin_screen_background.dart';
 
-import '../../../../core/resources/app_colors.dart';
 import '../../../../core/widgets/texts/note_text.dart';
 
 class SignInScreen extends ConsumerStatefulWidget {
@@ -19,8 +20,7 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true,
-      resizeToAvoidBottomInset: false,
+      // resizeToAvoidBottomInset: false,
       body: SignInScreenBackground(
         title: "Sign In",
         padding: AppValues.paddingNormal,
@@ -33,13 +33,42 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
             physics: const AlwaysScrollableScrollPhysics(),
             child: Column(
               children: [
-                const AppTextField(hint: 'Source Name'),
+                const AppTextField(
+                  hint: 'Source Name',
+                  maxLines: 1,
+                ),
                 const SizedBox(height: 12),
-                const AppTextField(hint: 'Server IP'),
+                const AppTextField(
+                  hint: 'Server IP',
+                  maxLines: 1,
+                ),
                 const SizedBox(height: 12),
-                const AppTextField(hint: 'Username'),
+                const AppTextField(
+                  hint: 'Username',
+                  maxLines: 1,
+                ),
                 const SizedBox(height: 12),
-                const AppTextField(hint: 'Password'),
+                Consumer(
+                  builder: (context, ref, _) {
+                    final passWordVisible = ref.watch(passwordVisibleProvider);
+
+                    return AppTextField(
+                      hint: 'Password',
+                      maxLines: 1,
+                      obscureText: !passWordVisible,
+                      suffixIcon: InkResponse(
+                        onTap: () {
+                          ref.read(passwordVisibleProvider.notifier).state = !passWordVisible;
+                        },
+                        child: Image.asset(
+                          passWordVisible == true ? 'assets/icons/basic_icons/eye_close.png': 'assets/icons/basic_icons/eye.png',
+                          height: 18,
+                          width: 18,
+                        ),
+                      ),
+                    );
+                  }
+                ),
                 const SizedBox(height: 12),
                 SizedBox(
                   width: double.infinity,

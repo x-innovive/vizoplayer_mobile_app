@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+
 import '../../resources/app_colors.dart';
 import '../../resources/app_values.dart';
 
@@ -13,6 +15,7 @@ class AppTextField extends StatelessWidget {
     this.validator,
     this.obscureText,
     this.focusNode,
+    this.suffixIcon,
     super.key,
   });
 
@@ -25,10 +28,10 @@ class AppTextField extends StatelessWidget {
   final String? Function(String?)? validator;
   final bool? obscureText;
   final FocusNode? focusNode;
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
-
     final outlineInputBorder = OutlineInputBorder(
       borderRadius: BorderRadius.circular(AppValues.borderRadiusSmall),
       borderSide: const BorderSide(
@@ -66,6 +69,7 @@ class AppTextField extends StatelessWidget {
           horizontal: AppValues.paddingNormal,
           vertical: AppValues.paddingSmall - 2,
         ),
+        suffixIcon: suffixIcon,
       ),
       cursorColor: AppColors.red,
       cursorWidth: 2,
