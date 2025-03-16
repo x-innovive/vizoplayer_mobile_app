@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:vizoplayer/core/resources/app_values.dart';
 import 'package:vizoplayer/core/widgets/buttons/red_button.dart';
 import 'package:vizoplayer/core/widgets/texts/app_text_field.dart';
