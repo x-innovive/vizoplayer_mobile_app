@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:vizoplayer/modules/servers/business/entity/server.dart';
+import '../../business/entity/server.dart';
 
 import '../../../../core/resources/app_values.dart';
 import '../../../../core/widgets/buttons/red_button.dart';
@@ -48,7 +48,9 @@ class _ServerListScreenState extends ConsumerState<ServerListScreen> {
                   itemBuilder: (context, index) {
                     return ServerTile(
                       server: servers[index],
-                      onEdit: (server) {},
+                      onEdit: (server) {
+                        AppNav.goRouter.push(RouteNames.editServerScreen, extra: server);
+                      },
                       onView: (server) {},
                       onDelete: (server) {},
                     );

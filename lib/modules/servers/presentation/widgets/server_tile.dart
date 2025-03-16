@@ -71,31 +71,40 @@ class ServerTile extends StatelessWidget {
                     onTap: () {
                       onEdit?.call(server);
                     },
-                    child: Image.asset('assets/icons/basic_icons/edit.png'),
+                    child: Container(
+                      padding: const EdgeInsets.all(AppValues.paddingSmall),
+                      child: Image.asset('assets/icons/basic_icons/edit.png'),
+                    ),
                   ),
                 ),
               ),
-              Material(
-                color: Colors.transparent,
-                child: InkResponse(
-                  onTap: () {
-                    onView?.call(server);
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(AppValues.paddingSmall),
-                    child: Image.asset('assets/icons/basic_icons/eye.png'),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkResponse(
+                    onTap: () {
+                      onView?.call(server);
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(AppValues.paddingSmall),
+                      child: Image.asset('assets/icons/basic_icons/eye.png'),
+                    ),
                   ),
                 ),
               ),
-              Material(
-                color: Colors.transparent,
-                child: InkResponse(
-                  onTap: () {
-                    onDelete?.call(server);
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.all(AppValues.paddingSmall),
-                    child: Image.asset('assets/icons/basic_icons/trash.png'),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkResponse(
+                    onTap: () {
+                      onDelete?.call(server);
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(AppValues.paddingSmall),
+                      child: Image.asset('assets/icons/basic_icons/trash.png'),
+                    ),
                   ),
                 ),
               ),

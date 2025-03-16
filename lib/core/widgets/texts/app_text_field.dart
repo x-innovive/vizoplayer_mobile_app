@@ -15,6 +15,7 @@ class AppTextField extends StatelessWidget {
     this.obscureText,
     this.focusNode,
     this.suffixIcon,
+    this.initialValue,
     super.key,
   });
 
@@ -28,6 +29,7 @@ class AppTextField extends StatelessWidget {
   final bool? obscureText;
   final FocusNode? focusNode;
   final Widget? suffixIcon;
+  final String? initialValue;
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +50,7 @@ class AppTextField extends StatelessWidget {
     );
 
     return TextFormField(
+      initialValue: initialValue,
       controller: controller,
       focusNode: focusNode,
       style: const TextStyle(
