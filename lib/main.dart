@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vizoplayer/core/resources/app_strings.dart';
-import 'package:vizoplayer/infrastructure/navigation/app_navigator.dart';
+import 'package:vizoplayer/infrastructure/navigation/app_nav.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/themes/app_themes.dart';

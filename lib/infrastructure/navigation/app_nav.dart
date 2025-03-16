@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:vizoplayer/infrastructure/navigation/route_names.dart';
-import 'package:vizoplayer/modules/get_started/presentation/screens/get_started_screen.dart';
-import 'package:vizoplayer/modules/get_started/presentation/screens/nowhere_screen.dart';
-import 'package:vizoplayer/modules/get_started/presentation/screens/splash_sscreen.dart';
+import '../../modules/servers/presentation/screens/add_server_screen.dart';
+import 'route_names.dart';
+import '../../modules/get_started/presentation/screens/get_started_screen.dart';
+import '../../modules/get_started/presentation/screens/nowhere_screen.dart';
+import '../../modules/get_started/presentation/screens/splash_sscreen.dart';
 import 'package:vizoplayer/modules/github_users/presentation/screens/github_users_screen.dart';
 import 'package:go_router/go_router.dart';
-import 'package:vizoplayer/modules/sign_in/presentation/screens/sign_in_screen.dart';
+import '../../modules/servers/presentation/screens/server_list_screen.dart';
+import '../../modules/sign_in/presentation/screens/sign_in_screen.dart';
 
 class AppNav {
   AppNav._();
@@ -83,6 +85,18 @@ class AppNav {
         path: RouteNames.signInScreen,
         builder: (context, state) {
           return const SignInScreen();
+        },
+      ),
+      GoRoute(
+        path: RouteNames.serverListScreen,
+        builder: (context, state) {
+          return const ServerListScreen();
+        },
+      ),
+      GoRoute(
+        path: RouteNames.addServerScreen,
+        builder: (context, state) {
+          return const AddServerScreen();
         },
       ),
     ],

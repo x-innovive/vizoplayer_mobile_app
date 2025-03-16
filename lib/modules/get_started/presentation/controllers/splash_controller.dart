@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vizoplayer/infrastructure/navigation/app_navigator.dart';
+import 'package:vizoplayer/infrastructure/navigation/app_nav.dart';
 import 'package:vizoplayer/infrastructure/navigation/route_names.dart';
 
 class SplashController {

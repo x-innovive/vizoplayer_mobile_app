@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vizoplayer/core/widgets/buttons/red_button.dart';
-import 'package:vizoplayer/infrastructure/navigation/app_navigator.dart';
+import 'package:vizoplayer/infrastructure/navigation/app_nav.dart';
 import 'package:vizoplayer/infrastructure/navigation/route_names.dart';
 import 'package:vizoplayer/modules/sign_in/presentation/widgets/app_icon_app_bar.dart';
 

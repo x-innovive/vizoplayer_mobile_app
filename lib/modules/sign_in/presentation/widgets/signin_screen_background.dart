@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vizoplayer/infrastructure/navigation/app_navigator.dart';
+import 'package:vizoplayer/infrastructure/navigation/app_nav.dart';
 
 import '../../../../core/resources/app_colors.dart';
 import '../../../../core/resources/app_values.dart';
@@ -48,7 +48,7 @@ class SignInScreenBackground extends StatelessWidget {
                 right: 0,
                 child: Container(
                   // height: 60,
-                  padding: EdgeInsets.symmetric(horizontal: padding, vertical: padding + 5),
+                  padding: EdgeInsets.symmetric(horizontal: padding, vertical: padding - 4),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       begin: Alignment.topCenter,
