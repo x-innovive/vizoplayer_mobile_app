@@ -1,13 +1,16 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../business/entity/server.dart';
 
 import '../../../../core/resources/app_values.dart';
 import '../../../../core/widgets/buttons/red_button.dart';
+import '../../../../core/widgets/dialogs/dialogs.dart';
 import '../../../../core/widgets/texts/note_text.dart';
 import '../../../../infrastructure/navigation/app_nav.dart';
 import '../../../../infrastructure/navigation/route_names.dart';
 import '../../../sign_in/presentation/widgets/signin_screen_background.dart';
+import '../../business/entity/server.dart';
 import '../widgets/server_tile.dart';
 
 class ServerListScreen extends ConsumerStatefulWidget {
@@ -51,8 +54,14 @@ class _ServerListScreenState extends ConsumerState<ServerListScreen> {
                       onEdit: (server) {
                         AppNav.goRouter.push(RouteNames.editServerScreen, extra: server);
                       },
+                      onDelete: (server) async {
+                        final confirmed = await showConfirmationDialog(
+                          context: context,
+                          message: 'Delete your ${server.name} server askjrf shrgfjvdsf dsjghvkds gvdslghvds vdsjbij',
+                        );
+                        log(confirmed.toString());
+                      },
                       onView: (server) {},
-                      onDelete: (server) {},
                     );
                   },
                 ),
