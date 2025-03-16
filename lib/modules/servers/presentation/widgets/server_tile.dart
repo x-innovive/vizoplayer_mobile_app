@@ -22,9 +22,11 @@ class ServerTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppValues.paddingNormal,
-        vertical: AppValues.paddingNormal + 4,
+      padding: const EdgeInsets.only(
+        left: AppValues.paddingNormal,
+        right: AppValues.paddingSmall,
+        top: AppValues.paddingNormal,
+        bottom: AppValues.paddingNormal,
       ),
       decoration: BoxDecoration(
         color: AppColors.filledColor,
@@ -61,25 +63,41 @@ class ServerTile extends StatelessWidget {
           ),
           Row(
             children: [
-              InkResponse(
-                onTap: () {
-                  onEdit?.call(server);
-                },
-                child: Image.asset('assets/icons/basic_icons/edit.png'),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkResponse(
+                    onTap: () {
+                      onEdit?.call(server);
+                    },
+                    child: Image.asset('assets/icons/basic_icons/edit.png'),
+                  ),
+                ),
               ),
-              const SizedBox(width: AppValues.paddingNormal),
-              InkResponse(
-                onTap: () {
-                  onEdit?.call(server);
-                },
-                child: Image.asset('assets/icons/basic_icons/eye.png'),
+              Material(
+                color: Colors.transparent,
+                child: InkResponse(
+                  onTap: () {
+                    onView?.call(server);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(AppValues.paddingSmall),
+                    child: Image.asset('assets/icons/basic_icons/eye.png'),
+                  ),
+                ),
               ),
-              const SizedBox(width: AppValues.paddingNormal),
-              InkResponse(
-                onTap: () {
-                  onEdit?.call(server);
-                },
-                child: Image.asset('assets/icons/basic_icons/trash.png'),
+              Material(
+                color: Colors.transparent,
+                child: InkResponse(
+                  onTap: () {
+                    onDelete?.call(server);
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(AppValues.paddingSmall),
+                    child: Image.asset('assets/icons/basic_icons/trash.png'),
+                  ),
+                ),
               ),
             ],
           ),

@@ -46,7 +46,12 @@ class _ServerListScreenState extends ConsumerState<ServerListScreen> {
                   padding: EdgeInsets.zero,
                   physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: (context, index) {
-                    return ServerTile(server: servers[index]);
+                    return ServerTile(
+                      server: servers[index],
+                      onEdit: (server) {},
+                      onView: (server) {},
+                      onDelete: (server) {},
+                    );
                   },
                 ),
                 SizedBox(
