@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/resources/app_values.dart';
+import '../../../../core/widgets/buttons/outlined_button.dart';
 import '../../../../core/widgets/buttons/red_button.dart';
 import '../../../../core/widgets/texts/app_text_field.dart';
 import '../../../../core/widgets/texts/note_text.dart';
@@ -80,7 +81,7 @@ class _EditServerScreenState extends ConsumerState<EditServerScreen> {
                 Row(
                   children: [
                     Expanded(
-                      child: RedButton(
+                      child: BorderedButton(
                         title: 'Cancel',
                         onTap: () {
                           // AppNav.goRouter.push(RouteNames.serverListScreen);

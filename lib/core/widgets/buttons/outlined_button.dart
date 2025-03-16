@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import '../../resources/app_colors.dart';
 import '../../resources/app_values.dart';
 
-class RedButton extends StatelessWidget {
+class BorderedButton extends StatelessWidget {
   final String title;
   final Function() onTap;
 
-  const RedButton({
+  const BorderedButton({
     super.key,
     required this.title,
     required this.onTap,
@@ -15,9 +15,9 @@ class RedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.red,
+    return OutlinedButton(
+      style: OutlinedButton.styleFrom(
+        backgroundColor: AppColors.filledColor,
         padding: const EdgeInsets.symmetric(
           vertical: 14,
           horizontal: AppValues.paddingNormal,
@@ -30,7 +30,12 @@ class RedButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppValues.borderRadiusSmall),
         ),
         splashFactory: InkRipple.splashFactory,
-        overlayColor: AppColors.backgroundDark,
+        overlayColor: Colors.white,
+        side: const BorderSide(
+          color: AppColors.borderColor,
+          width: 1.0,
+          style: BorderStyle.solid,
+        ),
       ),
       onPressed: onTap,
       child: Text(
