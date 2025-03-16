@@ -76,8 +76,8 @@ class _AddServerScreenState extends ConsumerState<AddServerScreen> {
                   child: RedButton(
                     title: 'Add Server',
                     onTap: () {
-                      // AppNav.goRouter.push(RouteNames.serverListScreen);
-                      AppNav.goRouter.pop();
+                      AppNav.goRouter.push(RouteNames.deactivatedAccountScreen);
+                      // AppNav.goRouter.pop();
                     },
                   ),
                 ),

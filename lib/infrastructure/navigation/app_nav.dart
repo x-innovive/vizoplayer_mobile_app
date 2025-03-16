@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../modules/servers/business/entity/server.dart';
 import '../../modules/servers/presentation/screens/add_server_screen.dart';
 import '../../modules/servers/presentation/screens/edit_server_screen.dart';
+import '../../modules/sign_in/presentation/screens/deactivated_account_screen.dart';
 import 'route_names.dart';
 import '../../modules/get_started/presentation/screens/get_started_screen.dart';
 import '../../modules/get_started/presentation/screens/nowhere_screen.dart';
@@ -106,6 +107,12 @@ class AppNav {
         builder: (context, state) {
           final server = state.extra as Server;
           return EditServerScreen(server: server);
+        },
+      ),
+      GoRoute(
+        path: RouteNames.deactivatedAccountScreen,
+        builder: (context, state) {
+          return const DeactivatedAccountScreen();
         },
       ),
     ],

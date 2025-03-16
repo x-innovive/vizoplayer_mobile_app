@@ -10,5 +10,5 @@ class RouteNames {
   static const serverListScreen = '/server_list_screen';
   static const addServerScreen = '/add_server_screen';
   static const editServerScreen = '/edit_server_screen';
-  static const activateAccountScreen = '/activate_account_screen';
+  static const deactivatedAccountScreen = '/deactivated_account_screen';
 }
