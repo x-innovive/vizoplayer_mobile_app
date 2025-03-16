@@ -57,7 +57,8 @@ class _ServerListScreenState extends ConsumerState<ServerListScreen> {
                       onDelete: (server) async {
                         final confirmed = await showConfirmationDialog(
                           context: context,
-                          message: 'Delete your ${server.name} server askjrf shrgfjvdsf dsjghvkds gvdslghvds vdsjbij',
+                          message: 'Delete your ${server.name} server',
+                          confirmBtnText: 'Delete'
                         );
                         log(confirmed.toString());
                       },

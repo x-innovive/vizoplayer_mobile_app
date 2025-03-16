@@ -9,6 +9,8 @@ Future<bool> showConfirmationDialog({
   required BuildContext context,
   String? title,
   required String message,
+  String? confirmBtnText,
+  String? cancelBtnText,
 }) async {
   final result = await showDialog<bool>(
     barrierDismissible: false,
@@ -50,7 +52,7 @@ Future<bool> showConfirmationDialog({
             children: [
               Expanded(
                 child: BorderedButton(
-                  title: 'Cancel',
+                  title: cancelBtnText?? 'Cancel',
                   onTap: () {
                     AppNav.goRouter.pop(false);
                   },
@@ -59,7 +61,7 @@ Future<bool> showConfirmationDialog({
               const SizedBox(width: AppValues.paddingNormal),
               Expanded(
                 child: RedButton(
-                  title: 'Ok',
+                  title: confirmBtnText ?? 'OK',
                   onTap: () {
                     AppNav.goRouter.pop(true);
                   },
