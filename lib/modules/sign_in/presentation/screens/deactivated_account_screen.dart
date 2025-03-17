@@ -6,6 +6,8 @@ import '../../../../core/resources/app_values.dart';
 import '../../../../core/widgets/buttons/outlined_button.dart';
 import '../../../../core/widgets/buttons/red_button.dart';
 import '../../../../core/widgets/texts/contact_us_text.dart';
+import '../../../../infrastructure/navigation/app_nav.dart';
+import '../../../../infrastructure/navigation/route_names.dart';
 import '../widgets/app_icon_app_bar.dart';
 
 class DeactivatedAccountScreen extends ConsumerStatefulWidget {
@@ -108,7 +110,9 @@ class _DeactivatedAccountScreenState extends ConsumerState<DeactivatedAccountScr
                         Expanded(
                           child: RedButton(
                             title: 'Activate',
-                            onTap: () {},
+                            onTap: () {
+                              AppNav.goRouter.push(RouteNames.homeScreen);
+                            },
                           ),
                         ),
                       ],
