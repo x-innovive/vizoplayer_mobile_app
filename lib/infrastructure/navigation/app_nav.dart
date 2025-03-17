@@ -1,26 +1,32 @@
 import 'package:flutter/material.dart';
-import '../../modules/servers/business/entity/server.dart';
-import '../../modules/servers/presentation/screens/add_server_screen.dart';
-import '../../modules/servers/presentation/screens/edit_server_screen.dart';
-import '../../modules/sign_in/presentation/screens/deactivated_account_screen.dart';
-import 'route_names.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../modules/favourite/presentation/screens/favourite_screen.dart';
 import '../../modules/get_started/presentation/screens/get_started_screen.dart';
 import '../../modules/get_started/presentation/screens/nowhere_screen.dart';
 import '../../modules/get_started/presentation/screens/splash_sscreen.dart';
-import 'package:vizoplayer/modules/github_users/presentation/screens/github_users_screen.dart';
-import 'package:go_router/go_router.dart';
+import '../../modules/home/presentation/screens/home_screen.dart';
+import '../../modules/home/presentation/screens/home_with_bottom_nav.dart';
+import '../../modules/profile/presentation/screens/profile_screen.dart';
+import '../../modules/servers/business/entity/server.dart';
+import '../../modules/servers/presentation/screens/add_server_screen.dart';
+import '../../modules/servers/presentation/screens/edit_server_screen.dart';
 import '../../modules/servers/presentation/screens/server_list_screen.dart';
+import '../../modules/sign_in/presentation/screens/deactivated_account_screen.dart';
 import '../../modules/sign_in/presentation/screens/sign_in_screen.dart';
+import 'route_names.dart';
 
 class AppNav {
   AppNav._();
 
-  /// This field hold the state of [Navigator] widget
+  /// This field hold the state of root [Navigator] widget
   /// which manage a stack of pages in the application
   ///
   /// This field will give the power to access of the
   /// application navigation outside of a context scope
   static final navKey = GlobalKey<NavigatorState>();
+
+  static final shellNavKey = GlobalKey<NavigatorState>();
 
   /// This key is used to access the state of the ScaffoldMessenger
   /// widget, which provides the functionality to show snack bars,
@@ -66,55 +72,95 @@ class AppNav {
     navigatorKey: navKey,
     initialLocation: RouteNames.splashScreen,
     routes: [
-      GoRoute(
-        path: '/',
-        builder: (context, state) {
-          return const NowhereScreen();
-        },
-      ),
-      GoRoute(
-        path: RouteNames.splashScreen,
-        builder: (context, state) {
-          return const SplashScreen();
-        },
-      ),
-      GoRoute(
-        path: RouteNames.getStartedScreen,
-        builder: (context, state) {
-          return const GetStartedScreen();
-        },
-      ),
-      GoRoute(
-        path: RouteNames.signInScreen,
-        builder: (context, state) {
-          return const SignInScreen();
-        },
-      ),
-      GoRoute(
-        path: RouteNames.serverListScreen,
-        builder: (context, state) {
-          return const ServerListScreen();
-        },
-      ),
-      GoRoute(
-        path: RouteNames.addServerScreen,
-        builder: (context, state) {
-          return const AddServerScreen();
-        },
-      ),
-      GoRoute(
-        path: RouteNames.editServerScreen,
-        builder: (context, state) {
-          final server = state.extra as Server;
-          return EditServerScreen(server: server);
-        },
-      ),
-      GoRoute(
-        path: RouteNames.deactivatedAccountScreen,
-        builder: (context, state) {
-          return const DeactivatedAccountScreen();
-        },
-      ),
+      ..._authRoutes,
+      ..._homeRoutes,
     ],
   );
+
+  static final _authRoutes = [
+    GoRoute(
+      path: '/',
+      builder: (context, state) {
+        return const NowhereScreen();
+      },
+    ),
+    GoRoute(
+      path: RouteNames.splashScreen,
+      builder: (context, state) {
+        return const SplashScreen();
+      },
+    ),
+    GoRoute(
+      path: RouteNames.getStartedScreen,
+      builder: (context, state) {
+        return const GetStartedScreen();
+      },
+    ),
+    GoRoute(
+      path: RouteNames.signInScreen,
+      builder: (context, state) {
+        return const SignInScreen();
+      },
+    ),
+    GoRoute(
+      path: RouteNames.serverListScreen,
+      builder: (context, state) {
+        return const ServerListScreen();
+      },
+    ),
+    GoRoute(
+      path: RouteNames.addServerScreen,
+      builder: (context, state) {
+        return const AddServerScreen();
+      },
+    ),
+    GoRoute(
+      path: RouteNames.editServerScreen,
+      builder: (context, state) {
+        final server = state.extra as Server;
+        return EditServerScreen(server: server);
+      },
+    ),
+    GoRoute(
+      path: RouteNames.deactivatedAccountScreen,
+      builder: (context, state) {
+        return const DeactivatedAccountScreen();
+      },
+    ),
+  ];
+
+  static final _homeRoutes = [
+    ShellRoute(
+      navigatorKey: shellNavKey,
+      builder: (context, state, child) {
+        return HomeWithBottomNav(child: child);
+      },
+      routes: [
+        GoRoute(
+          path: RouteNames.homeScreen,
+          // name: 'home',
+          builder: (context, state) {
+            return const HomeScreen();
+          }
+        ),
+
+        GoRoute(
+            path: RouteNames.favouriteScreen,
+            // name: 'favourite',
+            builder: (context, state) {
+              return const FavouriteScreen();
+            }
+        ),
+
+
+        GoRoute(
+            path: RouteNames.profileScreen,
+            // name: 'profile',
+            builder: (context, state) {
+              return const ProfileScreen();
+            }
+        ),
+      ],
+    ),
+  ];
 }

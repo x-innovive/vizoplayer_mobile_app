@@ -13,4 +13,7 @@ class RouteNames {
   static const deactivatedAccountScreen = '/deactivated_account_screen';
 
   static const homeScreen = '/home_screen';
+  static const favouriteScreen = '/favourite_screen';
+  static const profileScreen = '/profile_screen';
+
 }
