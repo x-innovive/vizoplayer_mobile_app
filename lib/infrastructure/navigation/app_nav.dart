@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../core/widgets/buttons/red_button.dart';
 import '../../modules/favourite/presentation/screens/favourite_screen.dart';
 import '../../modules/get_started/presentation/screens/get_started_screen.dart';
 import '../../modules/get_started/presentation/screens/nowhere_screen.dart';
@@ -129,7 +130,7 @@ class AppNav {
     ),
   ];
 
-  static final _homeRoutes = [
+  static final List<ShellRoute> _homeRoutes = [
     ShellRoute(
       navigatorKey: shellNavKey,
       builder: (context, state, child) {
@@ -141,24 +142,21 @@ class AppNav {
           // name: 'home',
           builder: (context, state) {
             return const HomeScreen();
-          }
+          },
         ),
-
         GoRoute(
-            path: RouteNames.favouriteScreen,
-            // name: 'favourite',
-            builder: (context, state) {
-              return const FavouriteScreen();
-            }
+          path: RouteNames.favouriteScreen,
+          // name: 'favourite',
+          builder: (context, state) {
+            return const FavouriteScreen();
+          },
         ),
-
-
         GoRoute(
-            path: RouteNames.profileScreen,
-            // name: 'profile',
-            builder: (context, state) {
-              return const ProfileScreen();
-            }
+          path: RouteNames.profileScreen,
+          // name: 'profile',
+          builder: (context, state) {
+            return const ProfileScreen();
+          },
         ),
       ],
     ),
