@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../core/widgets/buttons/red_button.dart';
 import '../../modules/favourite/presentation/screens/favourite_screen.dart';
+import '../../modules/fire/presentation/screens/fire_screen.dart';
 import '../../modules/get_started/presentation/screens/get_started_screen.dart';
 import '../../modules/get_started/presentation/screens/nowhere_screen.dart';
 import '../../modules/get_started/presentation/screens/splash_sscreen.dart';
@@ -71,7 +72,7 @@ class AppNav {
 
   static final goRouter = GoRouter(
     navigatorKey: navKey,
-    initialLocation: RouteNames.splashScreen,
+    initialLocation: RouteNames.homeScreen,
     routes: [
       ..._authRoutes,
       ..._homeRoutes,
@@ -142,6 +143,13 @@ class AppNav {
           // name: 'home',
           builder: (context, state) {
             return const HomeScreen();
+          },
+        ),
+        GoRoute(
+          path: RouteNames.fireScreen,
+          // name: 'home',
+          builder: (context, state) {
+            return const FireScreen();
           },
         ),
         GoRoute(

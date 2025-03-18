@@ -51,6 +51,8 @@ class AppThemes {
     brightness: Brightness.dark,
     primaryColor: AppColors.primaryDark,
     scaffoldBackgroundColor: AppColors.backgroundDark,
+    splashFactory: NoSplash.splashFactory,
+    splashColor: Colors.transparent,
     textTheme: const TextTheme(
       bodyLarge: TextStyle(color: AppColors.onBackgroundDark),
       bodyMedium: TextStyle(color: AppColors.onBackgroundDark),
@@ -83,6 +85,9 @@ class AppThemes {
       onPrimary: AppColors.onPrimaryDark,
       onSurface: AppColors.onSurfaceDark,
       onError: AppColors.onErrorDark,
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: Colors.black,
     ),
   );
 }
