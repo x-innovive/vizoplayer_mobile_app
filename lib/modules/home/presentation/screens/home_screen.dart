@@ -34,24 +34,24 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         actions: [
           InkResponse(
             onTap: () {},
-            child: ImageIcon(
+            child: const ImageIcon(
               size: 22,
               AssetImage(
                 'assets/icons/basic_icons/search.png',
               ),
             ),
           ),
-          SizedBox(width: AppValues.paddingNormal + 4),
+          const SizedBox(width: AppValues.paddingNormal + 4),
           InkResponse(
             onTap: () {},
-            child: ImageIcon(
+            child: const ImageIcon(
               size: 20,
               AssetImage(
                 'assets/icons/basic_icons/notification_bell.png',
               ),
             ),
           ),
-          SizedBox(width: AppValues.paddingNormal + 4),
+          const SizedBox(width: AppValues.paddingNormal + 4),
         ],
       ),
       body: Center(
