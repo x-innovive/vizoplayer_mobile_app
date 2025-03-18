@@ -33,4 +33,5 @@ class AppColors {
   static const red = Color(0xFFDD0C13);
   static const deepOrange = Color(0xFFF9A00E);
   static const subtitleColor = Color(0xFFCACACA);
+  static const scaffoldBlack = Color(0xFF141414);
 }
