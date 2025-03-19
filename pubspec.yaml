@@ -47,6 +47,8 @@ flutter:
     - assets/icons/app_icons/
     - assets/icons/basic_icons/
     - assets/icons/nav_icons/
+    - assets/temps/movies/
+    - assets/temps/movie_covers/
 
 
   # fonts

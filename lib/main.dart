@@ -25,3 +25,25 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+//  Future<void> _updateImage(ImageProvider provider) async {
+//     final ColorScheme newColorScheme;
+//     if (widget.loadColorScheme != null) {
+//       newColorScheme = await widget.loadColorScheme!(
+//         provider,
+//         isLight ? Brightness.light : Brightness.dark,
+//       );
+//     } else {
+//       newColorScheme = await ColorScheme.fromImageProvider(
+//         provider: provider,
+//         brightness: isLight ? Brightness.light : Brightness.dark,
+//       );
+//     }
+//     if (!mounted) {
+//       return;
+//     }
+//     setState(() {
+//       selectedImage = DynamicColorExample.images.indexOf(provider);
+//       currentColorScheme = newColorScheme;
+//     });
+//   }

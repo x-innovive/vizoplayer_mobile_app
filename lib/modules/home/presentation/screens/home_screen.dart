@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/resources/app_values.dart';
 import '../../../../core/widgets/appbars/main_shell_app_bar.dart';
+import '../../../../core/widgets/media/movie_cover.dart';
 import '../../../../core/widgets/tabs/category_tab.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
@@ -22,6 +23,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         onBellIconTap: () {},
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 4),
           Padding(
@@ -30,7 +32,17 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               onCategoryTap: () {},
             ),
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: 16),
+          const Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: AppValues.paddingNormal,
+            ),
+            child: Column(
+              children: [
+                MovieCover(assetPath: 'assets/temps/movie_covers/joker.png'),
+              ],
+            ),
+          ),
         ],
       ),
     );
