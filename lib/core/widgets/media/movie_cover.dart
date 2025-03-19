@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../resources/app_colors.dart';
 import '../../resources/app_values.dart';
+import '../buttons/button_with_icon.dart';
 
 class MovieCover extends StatelessWidget {
   final String assetPath;
@@ -72,9 +73,30 @@ class MovieCover extends StatelessWidget {
             children: [
               Text('violence'),
               const SizedBox(width: 8),
-              Icon(Icons.circle, size: 4,),
+              Icon(
+                Icons.circle,
+                size: 4,
+              ),
               const SizedBox(width: 8),
               Text('violence'),
+            ],
+          ),
+          const SizedBox(height: AppValues.paddingNormal - 4),
+          const Row(
+            children: [
+              ButtonWithIcon(
+                title: 'Play',
+                icon: Icon(Icons.play_arrow),
+                color: Colors.white,
+                contentColor: Colors.black,
+              ),
+
+              ButtonWithIcon(
+                title: 'My List',
+                icon: Icon(Icons.favorite_border),
+                color: Colors.blue,
+                contentColor: Colors.black,
+              ),
             ],
           ),
           const SizedBox(height: AppValues.paddingNormal),

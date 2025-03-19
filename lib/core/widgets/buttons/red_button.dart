@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../resources/app_colors.dart';
 import '../../resources/app_values.dart';
+import 'base_button.dart';
 
 class RedButton extends StatelessWidget {
   final String title;
@@ -15,24 +16,9 @@ class RedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: AppColors.red,
-        padding: const EdgeInsets.symmetric(
-          vertical: 14,
-          horizontal: AppValues.paddingNormal,
-        ),
-        textStyle: const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.w500,
-        ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppValues.borderRadiusSmall),
-        ),
-        splashFactory: InkRipple.splashFactory,
-        overlayColor: AppColors.backgroundDark,
-      ),
-      onPressed: onTap,
+    return BaseButton(
+      color: AppColors.red,
+      onTap: onTap,
       child: Text(
         title,
         style: const TextStyle(
