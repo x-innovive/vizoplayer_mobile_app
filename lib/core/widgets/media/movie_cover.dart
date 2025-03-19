@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../resources/app_colors.dart';
 import '../../resources/app_values.dart';
+import '../buttons/button_with_icon.dart';
 
 class MovieCover extends StatelessWidget {
   final String assetPath;
@@ -11,6 +12,8 @@ class MovieCover extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final coverPhotoWidth = (MediaQuery.of(context).size.width / 3) * 1.9;
+
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -33,7 +36,7 @@ class MovieCover extends StatelessWidget {
               AppValues.borderRadiusSmall,
             ),
             child: Image.asset(
-              width: (MediaQuery.of(context).size.width / 3) * 2,
+              width: coverPhotoWidth,
               assetPath,
               fit: BoxFit.cover,
             ),
@@ -72,10 +75,47 @@ class MovieCover extends StatelessWidget {
             children: [
               Text('violence'),
               const SizedBox(width: 8),
-              Icon(Icons.circle, size: 4,),
+              Icon(
+                Icons.circle,
+                size: 4,
+              ),
               const SizedBox(width: 8),
               Text('violence'),
             ],
+          ),
+          const SizedBox(height: AppValues.paddingNormal),
+          SizedBox(
+            width: (MediaQuery.of(context).size.width / 3) * 1.9,
+            child: Row(
+              children: [
+                Expanded(
+                  child: ButtonWithIcon(
+                    title: 'Play',
+                    onTap: () {},
+                    icon: const Icon(
+                      Icons.play_arrow,
+                      color: AppColors.scaffoldBlack,
+                    ),
+                    childColor: AppColors.scaffoldBlack,
+                    bgColor: Colors.white,
+                  ),
+                ),
+                const SizedBox(width: AppValues.paddingNormal - 4),
+                Expanded(
+                  child: ButtonWithIcon(
+                    title: 'My List',
+                    onTap: () {},
+                    icon: const Icon(
+                      CupertinoIcons.suit_heart,
+                      size: 20,
+                      // color: AppColors.scaffoldBlack,
+                    ),
+                    childColor: Colors.white,
+                    // bgColor: Colors.white,
+                  ),
+                ),
+              ],
+            ),
           ),
           const SizedBox(height: AppValues.paddingNormal),
         ],
