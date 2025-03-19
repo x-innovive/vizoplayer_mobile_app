@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -84,24 +86,6 @@ class MovieCover extends StatelessWidget {
             ],
           ),
           const SizedBox(height: AppValues.paddingNormal - 4),
-          const Row(
-            children: [
-              ButtonWithIcon(
-                title: 'Play',
-                icon: Icon(Icons.play_arrow),
-                color: Colors.white,
-                contentColor: Colors.black,
-              ),
-
-              ButtonWithIcon(
-                title: 'My List',
-                icon: Icon(Icons.favorite_border),
-                color: Colors.blue,
-                contentColor: Colors.black,
-              ),
-            ],
-          ),
-          const SizedBox(height: AppValues.paddingNormal),
           SizedBox(
             width: (MediaQuery.of(context).size.width / 3) * 1.9,
             child: Row(
@@ -109,7 +93,9 @@ class MovieCover extends StatelessWidget {
                 Expanded(
                   child: ButtonWithIcon(
                     title: 'Play',
-                    onTap: () {},
+                    onTap: () {
+                      log('Play');
+                    },
                     icon: const Icon(
                       Icons.play_arrow,
                       color: AppColors.scaffoldBlack,
@@ -122,7 +108,9 @@ class MovieCover extends StatelessWidget {
                 Expanded(
                   child: ButtonWithIcon(
                     title: 'My List',
-                    onTap: () {},
+                    onTap: () {
+                      log('My List');
+                    },
                     icon: const Icon(
                       CupertinoIcons.suit_heart,
                       size: 20,

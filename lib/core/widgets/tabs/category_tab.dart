@@ -15,14 +15,17 @@ class CategoryTab extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           ...['Movies', 'TV Shows', 'Video Club'].map((e) {
-            return InkWell(
-              onTap: onCategoryTap,
-              borderRadius: BorderRadius.circular(AppValues.borderRadiusMedium),
-              child: _container(
-                child: Text(
-                  e,
-                  style: const TextStyle(
-                    color: Color(0xFFCACACA),
+            return Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: InkWell(
+                onTap: onCategoryTap,
+                borderRadius: BorderRadius.circular(AppValues.borderRadiusMedium),
+                child: _container(
+                  child: Text(
+                    e,
+                    style: const TextStyle(
+                      color: Color(0xFFCACACA),
+                    ),
                   ),
                 ),
               ),
@@ -53,9 +56,6 @@ class CategoryTab extends StatelessWidget {
 
   Container _container({required Widget child}) {
     return Container(
-      margin: const EdgeInsets.only(
-        right: 8,
-      ),
       padding: const EdgeInsets.symmetric(
         horizontal: 10,
         vertical: 2,
