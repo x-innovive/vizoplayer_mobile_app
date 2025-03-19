@@ -83,6 +83,24 @@ class MovieCover extends StatelessWidget {
               Text('violence'),
             ],
           ),
+          const SizedBox(height: AppValues.paddingNormal - 4),
+          const Row(
+            children: [
+              ButtonWithIcon(
+                title: 'Play',
+                icon: Icon(Icons.play_arrow),
+                color: Colors.white,
+                contentColor: Colors.black,
+              ),
+
+              ButtonWithIcon(
+                title: 'My List',
+                icon: Icon(Icons.favorite_border),
+                color: Colors.blue,
+                contentColor: Colors.black,
+              ),
+            ],
+          ),
           const SizedBox(height: AppValues.paddingNormal),
           SizedBox(
             width: (MediaQuery.of(context).size.width / 3) * 1.9,
