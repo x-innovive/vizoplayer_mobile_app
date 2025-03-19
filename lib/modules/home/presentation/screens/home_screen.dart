@@ -22,28 +22,31 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         onSearchIconTap: () {},
         onBellIconTap: () {},
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 4),
-          Padding(
-            padding: const EdgeInsets.only(left: AppValues.paddingNormal),
-            child: CategoryTab(
-              onCategoryTap: () {},
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 4),
+            Padding(
+              padding: const EdgeInsets.only(left: AppValues.paddingNormal),
+              child: CategoryTab(
+                onCategoryTap: () {},
+              ),
             ),
-          ),
-          const SizedBox(height: 16),
-          const Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: AppValues.paddingNormal,
+            const SizedBox(height: 16),
+            const Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: AppValues.paddingNormal,
+              ),
+              child: Column(
+                children: [
+                  MovieCover(assetPath: 'assets/temps/movie_covers/joker.png'),
+                ],
+              ),
             ),
-            child: Column(
-              children: [
-                MovieCover(assetPath: 'assets/temps/movie_covers/joker.png'),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

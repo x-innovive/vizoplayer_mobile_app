@@ -22,6 +22,7 @@ class ButtonWithIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: onTap,
+      borderRadius: BorderRadius.circular(AppValues.borderRadiusSmall),
       child: Container(
         height: 32,
         alignment: Alignment.center,
