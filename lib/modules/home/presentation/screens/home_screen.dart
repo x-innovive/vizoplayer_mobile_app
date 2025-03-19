@@ -1,9 +1,13 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/dummys/dummy_datas.dart';
 import '../../../../core/resources/app_values.dart';
 import '../../../../core/widgets/appbars/main_shell_app_bar.dart';
+import '../../../../core/widgets/list_views/horizontal_movie_list.dart';
 import '../../../../core/widgets/media/movie_cover.dart';
 import '../../../../core/widgets/tabs/category_tab.dart';
 
@@ -19,8 +23,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MainShellAppBar(
-        onSearchIconTap: () {},
-        onBellIconTap: () {},
+        onSearchIconTap: () {
+          log('search');
+        },
+        onBellIconTap: () {
+          log('notification bell');
+        },
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -35,16 +43,42 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
             ),
             const SizedBox(height: 16),
-            const Padding(
-              padding: EdgeInsets.symmetric(
+            Padding(
+              padding: const EdgeInsets.symmetric(
                 horizontal: AppValues.paddingNormal,
               ),
               child: Column(
                 children: [
-                  MovieCover(assetPath: 'assets/temps/movie_covers/joker.png'),
+                  const MovieCover(assetPath: 'assets/temps/movie_covers/joker.png'),
+                  const SizedBox(height: AppValues.paddingLarge),
+                  HorizontalMovieList(
+                    title: 'Latest Movies',
+                    movieList: getMovieList(),
+                  ),
+                  const SizedBox(height: AppValues.paddingNormal * 2),
+                  HorizontalMovieList(
+                    title: 'Blockbuster US Action Movies',
+                    movieList: getMovieList(),
+                  ),
+                  const SizedBox(height: AppValues.paddingNormal * 2),
+                  HorizontalMovieList(
+                    title: 'Video Club',
+                    movieList: getMovieList(),
+                  ),
+                  const SizedBox(height: AppValues.paddingNormal * 2),
+                  HorizontalMovieList(
+                    title: 'Asian Movies & TV',
+                    movieList: getMovieList(),
+                  ),
+                  const SizedBox(height: AppValues.paddingNormal * 2),
+                  HorizontalMovieList(
+                    title: 'Suspenseful TV Dramas',
+                    movieList: getMovieList(),
+                  ),
                 ],
               ),
             ),
+            const SizedBox(height: AppValues.paddingLarge),
           ],
         ),
       ),
