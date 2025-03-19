@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
+class MainShellAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Function()? onSearchIconTap;
   final Function()? onBellIconTap;
 
-  const HomeAppBar({
+  const MainShellAppBar({
     super.key,
     this.onSearchIconTap,
     this.onBellIconTap,
