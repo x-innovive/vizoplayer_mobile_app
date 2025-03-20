@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/resources/app_colors.dart';
+import '../../../../core/widgets/appbars/main_shell_app_bar.dart';
 import '../../../../infrastructure/navigation/app_nav.dart';
 import '../../../../infrastructure/navigation/route_names.dart';
 import '../providers/home_providers.dart';
@@ -40,6 +43,14 @@ class _HomeWithBottomNavState extends ConsumerState<HomeWithBottomNav> {
     final selectedIndex = ref.watch(provBottomNvSelectedIndex);
 
     return Scaffold(
+      appBar: MainShellAppBar(
+        onSearchIconTap: () {
+          log('search');
+        },
+        onBellIconTap: () {
+          log('notification bell');
+        },
+      ),
       body: widget.child,
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

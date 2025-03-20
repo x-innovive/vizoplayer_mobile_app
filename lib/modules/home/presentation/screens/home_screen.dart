@@ -23,14 +23,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MainShellAppBar(
-        onSearchIconTap: () {
-          log('search');
-        },
-        onBellIconTap: () {
-          log('notification bell');
-        },
-      ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
