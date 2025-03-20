@@ -4,10 +4,12 @@ import '../../resources/app_values.dart';
 
 class MovieListTile extends StatelessWidget {
   final String movie;
+  final Function()? onTap;
 
   const MovieListTile({
     super.key,
     required this.movie,
+    required this.onTap,
   });
 
   @override
@@ -18,11 +20,14 @@ class MovieListTile extends StatelessWidget {
         padding: const EdgeInsets.only(
           right: 4,
         ),
-        child: Image.asset(
-          movie,
-          height: 160,
-          width: 106.66,
-          fit: BoxFit.contain,
+        child: InkWell(
+          onTap: onTap,
+          child: Image.asset(
+            movie,
+            height: 160,
+            width: 106.66,
+            fit: BoxFit.contain,
+          ),
         ),
       ),
     );

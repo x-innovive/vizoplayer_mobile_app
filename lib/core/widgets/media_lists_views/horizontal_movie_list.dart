@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../resources/app_values.dart';
 import 'movie_list_tile.dart';
+import 'title_and_see_all.dart';
 
 class HorizontalMovieList extends StatelessWidget {
   final String title;
@@ -20,28 +21,9 @@ class HorizontalMovieList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          children: [
-            Expanded(
-              child: Text(
-                title,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 18,
-                ),
-              ),
-            ),
-            const Row(
-              children: [
-                Text('See All'),
-                SizedBox(width: 4),
-                ImageIcon(
-                  AssetImage('assets/icons/basic_icons/arrow_right.png'),
-                  size: 12,
-                ),
-              ],
-            ),
-          ],
+        TitleAndSeeAll(
+          title: title,
+          onSeeAllTap: onSeeAllClick,
         ),
         const SizedBox(height: AppValues.paddingSmall),
         SizedBox(
@@ -53,6 +35,7 @@ class HorizontalMovieList extends StatelessWidget {
             itemBuilder: (context, index) {
               return MovieListTile(
                 movie: movieList[index],
+                onTap: () {},
               );
             },
           ),

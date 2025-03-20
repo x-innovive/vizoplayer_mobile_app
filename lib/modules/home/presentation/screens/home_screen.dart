@@ -1,14 +1,14 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/dummys/dummy_datas.dart';
 import '../../../../core/resources/app_values.dart';
 import '../../../../core/widgets/appbars/main_shell_app_bar.dart';
-import '../../../../core/widgets/list_views/horizontal_movie_list.dart';
 import '../../../../core/widgets/media/movie_cover.dart';
+import '../../../../core/widgets/media_lists_views/horizontal_movie_list.dart';
+import '../../../../core/widgets/media_lists_views/horizontal_tv_list.dart';
 import '../../../../core/widgets/tabs/category_tab.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
@@ -49,11 +49,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
               child: Column(
                 children: [
-                  const MovieCover(assetPath: 'assets/temps/movie_covers/joker.png'),
+                  const MovieCover(
+                    assetPath: 'assets/temps/movie_covers/joker.png',
+                  ),
                   const SizedBox(height: AppValues.paddingLarge),
                   HorizontalMovieList(
                     title: 'Latest Movies',
                     movieList: getMovieList(),
+                  ),
+                  const SizedBox(height: AppValues.paddingNormal * 2),
+                  HorizontalTvList(
+                    title: 'Live TV',
+                    tvList: tvList,
                   ),
                   const SizedBox(height: AppValues.paddingNormal * 2),
                   HorizontalMovieList(

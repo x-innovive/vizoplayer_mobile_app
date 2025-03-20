@@ -10,6 +10,16 @@ List<String>  movieList = [
 ];
 
 List<String> getMovieList() {
-  movieList.shuffle(Random());
-  return movieList;
+  return movieList.reversed.toList();
 }
+
+List<String> tvList = [
+  'assets/temps/tvs/1.png',
+  'assets/temps/tvs/2.png',
+  'assets/temps/tvs/3.png',
+  'assets/temps/tvs/4.png',
+  'assets/temps/tvs/5.png',
+  'assets/temps/tvs/6.png',
+  'assets/temps/tvs/7.png',
+  'assets/temps/tvs/8.png',
+];

@@ -49,7 +49,8 @@ flutter:
     - assets/icons/nav_icons/
     - assets/temps/movies/
     - assets/temps/movie_covers/
-    - assets/temps/tv_channels/
+    - assets/temps/tvs/
+    - assets/temps/audios/
 
 
   # fonts
