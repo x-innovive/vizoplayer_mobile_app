@@ -52,6 +52,49 @@ class _HomeWithBottomNavState extends ConsumerState<HomeWithBottomNav> {
         },
       ),
       body: widget.child,
+      // body: CustomScrollView(
+      //   slivers: [
+      //     SliverAppBar(
+      //       title: Row(
+      //         crossAxisAlignment: CrossAxisAlignment.center,
+      //         children: [
+      //           Image.asset(
+      //             'assets/icons/app_icons/vizo.png',
+      //             height: 31,
+      //             width: 31,
+      //             fit: BoxFit.contain,
+      //           ),
+      //           const Expanded(child: SizedBox()),
+      //         ],
+      //       ),
+      //       floating: true, // Shows the app bar when scrolling up
+      //       snap: true, // Ensures it appears instantly
+      //       backgroundColor: AppColors.scaffoldBlack,
+      //       elevation: 5,
+      //       actions: [
+      //         InkResponse(
+      //           onTap: () {},
+      //           child: const ImageIcon(
+      //             size: 22,
+      //             AssetImage('assets/icons/basic_icons/search.png'),
+      //           ),
+      //         ),
+      //         const SizedBox(width: 24), // Adjust spacing as needed
+      //         InkResponse(
+      //           onTap: () {},
+      //           child: const ImageIcon(
+      //             size: 20,
+      //             AssetImage('assets/icons/basic_icons/notification_bell.png'),
+      //           ),
+      //         ),
+      //         const SizedBox(width: 12),
+      //       ],
+      //     ),
+      //     SliverToBoxAdapter(
+      //       child: widget.child,
+      //     ),
+      //   ],
+      // ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: selectedIndex,
