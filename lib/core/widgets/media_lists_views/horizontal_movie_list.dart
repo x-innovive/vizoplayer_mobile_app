@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../resources/app_values.dart';
-import 'movie_list_tile.dart';
+import 'horizontal_movie_list_tile.dart';
 import 'title_and_see_all.dart';
 
 class HorizontalMovieList extends StatelessWidget {
@@ -41,7 +41,7 @@ class HorizontalMovieList extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {
-              return MovieListTile(
+              return HorizontalMovieListTile(
                 movie: movieList[index],
                 onTap: () {},
               );

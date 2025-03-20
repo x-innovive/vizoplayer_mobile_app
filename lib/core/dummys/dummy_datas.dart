@@ -29,12 +29,4 @@ List<String> audioList = [
   'assets/temps/audios/1.png',
   'assets/temps/audios/2.png',
   'assets/temps/audios/3.png',
-  'assets/temps/audios/4.png',
-  'assets/temps/audios/6.png',
-  'assets/temps/audios/5.png',
-  'assets/temps/audios/7.png',
-  'assets/temps/audios/8.png',
-  'assets/temps/audios/9.png',
-  'assets/temps/audios/11.png',
-  'assets/temps/audios/12.png',
 ];

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../../resources/app_values.dart';
 
-class MovieListTile extends StatelessWidget {
+class HorizontalMovieListTile extends StatelessWidget {
   final String movie;
   final Function()? onTap;
 
-  const MovieListTile({
+  const HorizontalMovieListTile({
     super.key,
     required this.movie,
     required this.onTap,
