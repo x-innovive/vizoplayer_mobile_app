@@ -7,6 +7,7 @@ import '../../../../core/dummys/dummy_datas.dart';
 import '../../../../core/resources/app_values.dart';
 import '../../../../core/widgets/appbars/main_shell_app_bar.dart';
 import '../../../../core/widgets/media/movie_cover.dart';
+import '../../../../core/widgets/media_lists_views/horizontal_audio_list.dart';
 import '../../../../core/widgets/media_lists_views/horizontal_movie_list.dart';
 import '../../../../core/widgets/media_lists_views/horizontal_tv_list.dart';
 import '../../../../core/widgets/tabs/category_tab.dart';
@@ -77,6 +78,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     title: 'Asian Movies & TV',
                     movieList: getMovieList(),
                   ),
+                  const SizedBox(height: AppValues.paddingNormal * 2),
+                  HorizontalAudioList(title: 'Audio Club', audioList: audioList),
                   const SizedBox(height: AppValues.paddingNormal * 2),
                   HorizontalMovieList(
                     title: 'Suspenseful TV Dramas',
