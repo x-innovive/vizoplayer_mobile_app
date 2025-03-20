@@ -10,7 +10,8 @@ List<String>  movieList = [
 ];
 
 List<String> getMovieList() {
-  return movieList.reversed.toList();
+  movieList.shuffle(Random());
+  return [...movieList];
 }
 
 List<String> tvList = [

@@ -39,7 +39,7 @@ class MainShellAppBar extends StatelessWidget implements PreferredSizeWidget {
             AssetImage('assets/icons/basic_icons/search.png'),
           ),
         ),
-        const SizedBox(width: 12), // Adjust spacing as needed
+        const SizedBox(width: 24), // Adjust spacing as needed
         InkResponse(
           onTap: onBellIconTap,
           child: const ImageIcon(
