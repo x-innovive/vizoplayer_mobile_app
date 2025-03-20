@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../resources/app_values.dart';
 
 class CategoryTab extends StatelessWidget {
-  final Function()? onCategoryTap;
+  final Function(String)? onCategoryTap;
   const CategoryTab({super.key, this.onCategoryTap});
 
   @override
@@ -18,7 +18,9 @@ class CategoryTab extends StatelessWidget {
             return Padding(
               padding: const EdgeInsets.only(right: 8),
               child: InkWell(
-                onTap: onCategoryTap,
+                onTap: () {
+                  onCategoryTap?.call(e);
+                },
                 borderRadius: BorderRadius.circular(AppValues.borderRadiusMedium),
                 child: _container(
                   child: Text(

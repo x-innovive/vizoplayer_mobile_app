@@ -43,14 +43,14 @@ class _HomeWithBottomNavState extends ConsumerState<HomeWithBottomNav> {
     final selectedIndex = ref.watch(provBottomNvSelectedIndex);
 
     return Scaffold(
-      appBar: MainShellAppBar(
-        onSearchIconTap: () {
-          log('search');
-        },
-        onBellIconTap: () {
-          log('notification bell');
-        },
-      ),
+      // appBar: MainShellAppBar(
+      //   onSearchIconTap: () {
+      //     log('search');
+      //   },
+      //   onBellIconTap: () {
+      //     log('notification bell');
+      //   },
+      // ),
       body: widget.child,
       // body: CustomScrollView(
       //   slivers: [

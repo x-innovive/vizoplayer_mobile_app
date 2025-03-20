@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../core/widgets/buttons/red_button.dart';
 import '../../modules/favourite/presentation/screens/favourite_screen.dart';
 import '../../modules/fire/presentation/screens/fire_screen.dart';
 import '../../modules/get_started/presentation/screens/get_started_screen.dart';
 import '../../modules/get_started/presentation/screens/nowhere_screen.dart';
 import '../../modules/get_started/presentation/screens/splash_sscreen.dart';
+import '../../modules/home/presentation/screens/home_categor_details_screen.dart';
 import '../../modules/home/presentation/screens/home_screen.dart';
 import '../../modules/home/presentation/screens/home_with_bottom_nav.dart';
 import '../../modules/profile/presentation/screens/profile_screen.dart';
@@ -144,6 +144,14 @@ class AppNav {
           builder: (context, state) {
             return const HomeScreen();
           },
+          routes: [
+            GoRoute(
+              path: RouteNames.homeCategoryDetailsScreen,
+              builder: (context, state) {
+                return const HomeCategoryDetailsScreen();
+              }
+            ),
+          ],
         ),
         GoRoute(
           path: RouteNames.fireScreen,

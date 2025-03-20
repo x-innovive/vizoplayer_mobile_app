@@ -11,6 +11,8 @@ import '../../../../core/widgets/media_lists_views/horizontal_audio_list.dart';
 import '../../../../core/widgets/media_lists_views/horizontal_movie_list.dart';
 import '../../../../core/widgets/media_lists_views/horizontal_tv_list.dart';
 import '../../../../core/widgets/tabs/category_tab.dart';
+import '../../../../infrastructure/navigation/app_nav.dart';
+import '../../../../infrastructure/navigation/route_names.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -23,6 +25,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: MainShellAppBar(
+        onSearchIconTap: () {
+          log('search');
+        },
+        onBellIconTap: () {
+          log('notification bell');
+        },
+      ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
@@ -32,7 +42,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             Padding(
               padding: const EdgeInsets.only(left: AppValues.paddingNormal),
               child: CategoryTab(
-                onCategoryTap: () {},
+                onCategoryTap: (category) {
+                  AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.homeCategoryDetailsScreen);
+                },
               ),
             ),
             const SizedBox(height: 16),
