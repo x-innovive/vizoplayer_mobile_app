@@ -10,6 +10,7 @@ class HorizontalMovieList extends StatelessWidget {
   final Function()? onSeeAllClick;
   final List<String> movieList;
   final double horizontalPadding;
+  final Function(String)? onMovieTap;
 
   const HorizontalMovieList({
     super.key,
@@ -17,6 +18,7 @@ class HorizontalMovieList extends StatelessWidget {
     this.onSeeAllClick,
     required this.movieList,
     required this.horizontalPadding,
+    this.onMovieTap,
   });
 
   @override
@@ -43,7 +45,7 @@ class HorizontalMovieList extends StatelessWidget {
             itemBuilder: (context, index) {
               return HorizontalMovieListTile(
                 movie: movieList[index],
-                onTap: () {},
+                onTap: onMovieTap,
               );
             },
           ),

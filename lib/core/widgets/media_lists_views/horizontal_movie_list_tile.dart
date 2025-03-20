@@ -4,7 +4,7 @@ import '../../resources/app_values.dart';
 
 class HorizontalMovieListTile extends StatelessWidget {
   final String movie;
-  final Function()? onTap;
+  final Function(String)? onTap;
 
   const HorizontalMovieListTile({
     super.key,
@@ -21,7 +21,9 @@ class HorizontalMovieListTile extends StatelessWidget {
           right: 4,
         ),
         child: InkWell(
-          onTap: onTap,
+          onTap: () {
+            onTap?.call(movie);
+          },
           child: Image.asset(
             movie,
             height: 160,

@@ -61,6 +61,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               title: 'Latest Movies',
               movieList: getMovieList(),
               horizontalPadding: AppValues.paddingNormal,
+              onMovieTap: (movie) {
+                AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.movieDetailsScreen);
+              },
+              onSeeAllClick: () {},
             ),
             const SizedBox(height: AppValues.paddingNormal * 2),
             HorizontalTvList(
@@ -73,18 +77,30 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               title: 'Blockbuster US Action Movies',
               movieList: getMovieList(),
               horizontalPadding: AppValues.paddingNormal,
+              onMovieTap: (movie) {
+                AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.movieDetailsScreen);
+              },
+              onSeeAllClick: () {},
             ),
             const SizedBox(height: AppValues.paddingNormal * 2),
             HorizontalMovieList(
               title: 'Video Club',
               movieList: getMovieList(),
               horizontalPadding: AppValues.paddingNormal,
+              onMovieTap: (movie) {
+                AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.movieDetailsScreen);
+              },
+              onSeeAllClick: () {},
             ),
             const SizedBox(height: AppValues.paddingNormal * 2),
             HorizontalMovieList(
               title: 'Asian Movies & TV',
               movieList: getMovieList(),
               horizontalPadding: AppValues.paddingNormal,
+              onMovieTap: (movie) {
+                AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.movieDetailsScreen);
+              },
+              onSeeAllClick: () {},
             ),
             const SizedBox(height: AppValues.paddingNormal * 2),
             HorizontalAudioList(
@@ -97,6 +113,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               title: 'Suspenseful TV Dramas',
               movieList: getMovieList(),
               horizontalPadding: AppValues.paddingNormal,
+              onMovieTap: (movie) {
+                AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.movieDetailsScreen);
+              },
+              onSeeAllClick: () {},
             ),
             const SizedBox(height: AppValues.paddingLarge),
           ],

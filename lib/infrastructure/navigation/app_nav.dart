@@ -9,6 +9,7 @@ import '../../modules/get_started/presentation/screens/splash_sscreen.dart';
 import '../../modules/home/presentation/screens/home_categor_details_screen.dart';
 import '../../modules/home/presentation/screens/home_screen.dart';
 import '../../modules/home/presentation/screens/home_with_bottom_nav.dart';
+import '../../modules/movie/presentation/screens/movie_detail_screen.dart';
 import '../../modules/profile/presentation/screens/profile_screen.dart';
 import '../../modules/servers/business/entity/server.dart';
 import '../../modules/servers/presentation/screens/add_server_screen.dart';
@@ -150,6 +151,12 @@ class AppNav {
               builder: (context, state) {
                 return const HomeCategoryDetailsScreen();
               }
+            ),
+            GoRoute(
+                path: RouteNames.movieDetailsScreen,
+                builder: (context, state) {
+                  return const MovieDetailScreen();
+                }
             ),
           ],
         ),

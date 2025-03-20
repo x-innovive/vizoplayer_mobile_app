@@ -19,4 +19,6 @@ class RouteNames {
   static const favouriteScreen = '/favourite_screen';
   static const profileScreen = '/profile_screen';
 
+  static const movieDetailsScreen = '/movie_details_screen';
+
 }
