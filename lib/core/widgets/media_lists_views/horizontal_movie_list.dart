@@ -9,27 +9,35 @@ class HorizontalMovieList extends StatelessWidget {
   final String title;
   final Function()? onSeeAllClick;
   final List<String> movieList;
+  final double horizontalPadding;
 
   const HorizontalMovieList({
     super.key,
     required this.title,
     this.onSeeAllClick,
     required this.movieList,
+    required this.horizontalPadding,
   });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TitleAndSeeAll(
-          title: title,
-          onSeeAllTap: onSeeAllClick,
+        Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: horizontalPadding,
+          ),
+          child: TitleAndSeeAll(
+            title: title,
+            onSeeAllTap: onSeeAllClick,
+          ),
         ),
         const SizedBox(height: AppValues.paddingSmall),
         SizedBox(
           height: 160,
           child: ListView.builder(
             itemCount: movieList.length,
+            padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {

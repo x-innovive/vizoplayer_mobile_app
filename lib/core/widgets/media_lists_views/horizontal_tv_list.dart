@@ -8,27 +8,37 @@ class HorizontalTvList extends StatelessWidget {
   final String title;
   final Function()? onSeeAllClick;
   final List<String> tvList;
+  final horizontalPadding;
 
   const HorizontalTvList({
     super.key,
     required this.title,
     this.onSeeAllClick,
     required this.tvList,
+    this.horizontalPadding,
   });
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TitleAndSeeAll(
-          title: title,
-          onSeeAllTap: onSeeAllClick,
+        Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: horizontalPadding,
+          ),
+          child: TitleAndSeeAll(
+            title: title,
+            onSeeAllTap: onSeeAllClick,
+          ),
         ),
         const SizedBox(height: AppValues.paddingSmall),
         SizedBox(
           height: 72,
           child: ListView.builder(
             itemCount: tvList.length,
+            padding: EdgeInsets.symmetric(
+              horizontal: horizontalPadding,
+            ),
             physics: const BouncingScrollPhysics(),
             scrollDirection: Axis.horizontal,
             itemBuilder: (context, index) {

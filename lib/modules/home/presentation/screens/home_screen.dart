@@ -44,49 +44,55 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
             ),
             const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.symmetric(
+            const Padding(
+              padding: EdgeInsets.symmetric(
                 horizontal: AppValues.paddingNormal,
               ),
-              child: Column(
-                children: [
-                  const MovieCover(
-                    assetPath: 'assets/temps/movie_covers/joker.png',
-                  ),
-                  const SizedBox(height: AppValues.paddingLarge),
-                  HorizontalMovieList(
-                    title: 'Latest Movies',
-                    movieList: getMovieList(),
-                  ),
-                  const SizedBox(height: AppValues.paddingNormal * 2),
-                  HorizontalTvList(
-                    title: 'Live TV',
-                    tvList: tvList,
-                  ),
-                  const SizedBox(height: AppValues.paddingNormal * 2),
-                  HorizontalMovieList(
-                    title: 'Blockbuster US Action Movies',
-                    movieList: getMovieList(),
-                  ),
-                  const SizedBox(height: AppValues.paddingNormal * 2),
-                  HorizontalMovieList(
-                    title: 'Video Club',
-                    movieList: getMovieList(),
-                  ),
-                  const SizedBox(height: AppValues.paddingNormal * 2),
-                  HorizontalMovieList(
-                    title: 'Asian Movies & TV',
-                    movieList: getMovieList(),
-                  ),
-                  const SizedBox(height: AppValues.paddingNormal * 2),
-                  HorizontalAudioList(title: 'Audio Club', audioList: audioList),
-                  const SizedBox(height: AppValues.paddingNormal * 2),
-                  HorizontalMovieList(
-                    title: 'Suspenseful TV Dramas',
-                    movieList: getMovieList(),
-                  ),
-                ],
+              child: MovieCover(
+                assetPath: 'assets/temps/movie_covers/joker.png',
               ),
+            ),
+            const SizedBox(height: AppValues.paddingLarge),
+            HorizontalMovieList(
+              title: 'Latest Movies',
+              movieList: getMovieList(),
+              horizontalPadding: AppValues.paddingNormal,
+            ),
+            const SizedBox(height: AppValues.paddingNormal * 2),
+            HorizontalTvList(
+              title: 'Live TV',
+              tvList: tvList,
+              horizontalPadding: AppValues.paddingNormal,
+            ),
+            const SizedBox(height: AppValues.paddingNormal * 2),
+            HorizontalMovieList(
+              title: 'Blockbuster US Action Movies',
+              movieList: getMovieList(),
+              horizontalPadding: AppValues.paddingNormal,
+            ),
+            const SizedBox(height: AppValues.paddingNormal * 2),
+            HorizontalMovieList(
+              title: 'Video Club',
+              movieList: getMovieList(),
+              horizontalPadding: AppValues.paddingNormal,
+            ),
+            const SizedBox(height: AppValues.paddingNormal * 2),
+            HorizontalMovieList(
+              title: 'Asian Movies & TV',
+              movieList: getMovieList(),
+              horizontalPadding: AppValues.paddingNormal,
+            ),
+            const SizedBox(height: AppValues.paddingNormal * 2),
+            HorizontalAudioList(
+              title: 'Audio Club',
+              audioList: audioList,
+              horizontalPadding: AppValues.paddingNormal,
+            ),
+            const SizedBox(height: AppValues.paddingNormal * 2),
+            HorizontalMovieList(
+              title: 'Suspenseful TV Dramas',
+              movieList: getMovieList(),
+              horizontalPadding: AppValues.paddingNormal,
             ),
             const SizedBox(height: AppValues.paddingLarge),
           ],
