@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../../modules/movie/business/entity/movie.dart';
 import '../../resources/app_values.dart';
 
 class HorizontalMovieListTile extends StatelessWidget {
-  final String movie;
-  final Function(String)? onTap;
+  final Movie movie;
+  final Function(Movie)? onTap;
 
   const HorizontalMovieListTile({
     super.key,
@@ -25,7 +26,7 @@ class HorizontalMovieListTile extends StatelessWidget {
             onTap?.call(movie);
           },
           child: Image.asset(
-            movie,
+            movie.cover ?? '',
             height: 160,
             width: 106.66,
             fit: BoxFit.contain,

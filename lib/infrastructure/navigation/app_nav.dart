@@ -6,6 +6,7 @@ import '../../modules/fire/presentation/screens/fire_screen.dart';
 import '../../modules/get_started/presentation/screens/get_started_screen.dart';
 import '../../modules/get_started/presentation/screens/nowhere_screen.dart';
 import '../../modules/get_started/presentation/screens/splash_sscreen.dart';
+import '../../modules/movie/business/entity/movie.dart';
 import '../../modules/movie/presentation/screens/movies_screen.dart';
 import '../../modules/home/presentation/screens/home_screen.dart';
 import '../../modules/home/presentation/screens/home_with_bottom_nav.dart';
@@ -155,7 +156,7 @@ class AppNav {
             GoRoute(
                 path: RouteNames.moviePlayerScreen,
                 builder: (context, state) {
-                  return const MoviePlayerScreen();
+                  return MoviePlayerScreen(movie: state.extra as Movie?);
                 }
             ),
           ],

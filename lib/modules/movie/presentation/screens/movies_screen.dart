@@ -50,36 +50,72 @@ class _HomeCategoryDetailsScreenState extends ConsumerState<MoviesScreen> {
               title: 'Latest Movies',
               movieList: getMovieList(),
               horizontalPadding: AppValues.paddingNormal,
+              onMovieTap: (movie) {
+                AppNav.goRouter.push(
+                  RouteNames.homeScreen + RouteNames.moviePlayerScreen,
+                  extra: movie,
+                );
+              },
             ),
             const SizedBox(height: AppValues.paddingNormal * 2),
             HorizontalMovieList(
               title: 'Popular Movies',
               movieList: getMovieList(),
               horizontalPadding: AppValues.paddingNormal,
+              onMovieTap: (movie) {
+                AppNav.goRouter.push(
+                  RouteNames.homeScreen + RouteNames.moviePlayerScreen,
+                  extra: movie,
+                );
+              },
             ),
             const SizedBox(height: AppValues.paddingNormal * 2),
             HorizontalMovieList(
               title: 'Today’s Pick for You',
               movieList: getMovieList(),
               horizontalPadding: AppValues.paddingNormal,
+              onMovieTap: (movie) {
+                AppNav.goRouter.push(
+                  RouteNames.homeScreen + RouteNames.moviePlayerScreen,
+                  extra: movie,
+                );
+              },
             ),
             const SizedBox(height: AppValues.paddingNormal * 2),
             HorizontalMovieList(
               title: 'Comedy Movies',
               movieList: getMovieList(),
               horizontalPadding: AppValues.paddingNormal,
+              onMovieTap: (movie) {
+                AppNav.goRouter.push(
+                  RouteNames.homeScreen + RouteNames.moviePlayerScreen,
+                  extra: movie,
+                );
+              },
             ),
             const SizedBox(height: AppValues.paddingNormal * 2),
             HorizontalMovieList(
               title: 'Action Movies',
               movieList: getMovieList(),
               horizontalPadding: AppValues.paddingNormal,
+              onMovieTap: (movie) {
+                AppNav.goRouter.push(
+                  RouteNames.homeScreen + RouteNames.moviePlayerScreen,
+                  extra: movie,
+                );
+              },
             ),
             const SizedBox(height: AppValues.paddingNormal * 2),
             HorizontalMovieList(
               title: 'Hollywood Movies',
               movieList: getMovieList(),
               horizontalPadding: AppValues.paddingNormal,
+              onMovieTap: (movie) {
+                AppNav.goRouter.push(
+                  RouteNames.homeScreen + RouteNames.moviePlayerScreen,
+                  extra: movie,
+                );
+              },
             ),
             const SizedBox(height: AppValues.paddingLarge),
           ],

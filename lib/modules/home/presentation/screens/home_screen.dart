@@ -62,7 +62,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               movieList: getMovieList(),
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
-                AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.moviePlayerScreen);
+                AppNav.goRouter.push(
+                  RouteNames.homeScreen + RouteNames.moviePlayerScreen,
+                  extra: movie,
+                );
               },
               onSeeAllClick: () {},
             ),
@@ -78,7 +81,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               movieList: getMovieList(),
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
-                AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.moviePlayerScreen);
+                AppNav.goRouter.push(
+                  RouteNames.homeScreen + RouteNames.moviePlayerScreen,
+                  extra: movie,
+                );
               },
               onSeeAllClick: () {},
             ),
@@ -88,7 +94,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               movieList: getMovieList(),
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
-                AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.moviePlayerScreen);
+                AppNav.goRouter.push(
+                  RouteNames.homeScreen + RouteNames.moviePlayerScreen,
+                  extra: movie,
+                );
               },
               onSeeAllClick: () {},
             ),
@@ -98,7 +107,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               movieList: getMovieList(),
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
-                AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.moviePlayerScreen);
+                AppNav.goRouter.push(
+                  RouteNames.homeScreen + RouteNames.moviePlayerScreen,
+                  extra: movie,
+                );
               },
               onSeeAllClick: () {},
             ),
@@ -114,7 +126,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               movieList: getMovieList(),
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
-                AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.moviePlayerScreen);
+                AppNav.goRouter.push(
+                  RouteNames.homeScreen + RouteNames.moviePlayerScreen,
+                  extra: movie,
+                );
               },
               onSeeAllClick: () {},
             ),

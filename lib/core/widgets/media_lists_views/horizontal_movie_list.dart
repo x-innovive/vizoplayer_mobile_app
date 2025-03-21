@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../modules/movie/business/entity/movie.dart';
 import '../../resources/app_values.dart';
 import 'horizontal_movie_list_tile.dart';
 import 'title_and_see_all.dart';
@@ -8,9 +9,9 @@ import 'title_and_see_all.dart';
 class HorizontalMovieList extends StatelessWidget {
   final String title;
   final Function()? onSeeAllClick;
-  final List<String> movieList;
+  final List<Movie> movieList;
   final double horizontalPadding;
-  final Function(String)? onMovieTap;
+  final Function(Movie)? onMovieTap;
 
   const HorizontalMovieList({
     super.key,
