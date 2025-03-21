@@ -17,12 +17,32 @@ class _MovieVideoPlayerState extends State<MovieVideoPlayer> {
 
   @override
   void initState() {
-    playerController = VideoPlayerController.networkUrl(Uri.parse(widget.url ?? ''));
+    playerController = VideoPlayerController.networkUrl(
+      Uri.parse(widget.url ?? ''),
+    );
     chewieController = ChewieController(
       videoPlayerController: playerController,
+      aspectRatio: 16 / 9,
+      allowedScreenSleep: false,
+      allowFullScreen: true,
+      bufferingBuilder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(
+            color: Colors.white,
+          ),
+        );
+      },
     );
 
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    playerController.dispose();
+    chewieController.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -32,6 +52,11 @@ class _MovieVideoPlayerState extends State<MovieVideoPlayer> {
         child: Text('No video found.'),
       );
     }
-    return Chewie(controller: chewieController);
+    return AspectRatio(
+      aspectRatio: 16 / 9,
+      child: Chewie(
+        controller: chewieController,
+      ),
+    );
   }
 }
