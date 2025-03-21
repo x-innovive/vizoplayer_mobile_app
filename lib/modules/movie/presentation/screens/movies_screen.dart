@@ -10,18 +10,18 @@ import '../../../../core/widgets/tabs/category_tab.dart';
 import '../../../../infrastructure/navigation/app_nav.dart';
 import '../../../../infrastructure/navigation/route_names.dart';
 
-class HomeCategoryDetailsScreen extends ConsumerStatefulWidget {
-  const HomeCategoryDetailsScreen({super.key});
+class MoviesScreen extends ConsumerStatefulWidget {
+  const MoviesScreen({super.key});
 
   @override
   ConsumerState createState() => _HomeCategoryDetailsScreenState();
 }
 
-class _HomeCategoryDetailsScreenState extends ConsumerState<HomeCategoryDetailsScreen> {
+class _HomeCategoryDetailsScreenState extends ConsumerState<MoviesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppAppBar(title: 'Movies'),
+      appBar: const AppAppBar(title: 'Movies'),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
@@ -32,7 +32,7 @@ class _HomeCategoryDetailsScreenState extends ConsumerState<HomeCategoryDetailsS
               padding: const EdgeInsets.only(left: AppValues.paddingNormal),
               child: CategoryTab(
                 onCategoryTap: (category) {
-                  AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.homeCategoryDetailsScreen);
+                  AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.moviesScreen);
                 },
               ),
             ),

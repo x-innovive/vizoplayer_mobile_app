@@ -13,12 +13,12 @@ class RouteNames {
   static const deactivatedAccountScreen = '/deactivated_account_screen';
 
   static const homeScreen = '/home_screen';
-  static const homeCategoryDetailsScreen = '/home_category_details_screen';
+  static const moviesScreen = '/movies_screen';
 
   static const fireScreen = '/fire_screen';
   static const favouriteScreen = '/favourite_screen';
   static const profileScreen = '/profile_screen';
 
-  static const movieDetailsScreen = '/movie_details_screen';
+  static const moviePlayerScreen = '/movie_player_screen';
 
 }

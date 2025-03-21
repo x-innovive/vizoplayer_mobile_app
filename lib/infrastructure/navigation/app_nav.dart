@@ -6,10 +6,10 @@ import '../../modules/fire/presentation/screens/fire_screen.dart';
 import '../../modules/get_started/presentation/screens/get_started_screen.dart';
 import '../../modules/get_started/presentation/screens/nowhere_screen.dart';
 import '../../modules/get_started/presentation/screens/splash_sscreen.dart';
-import '../../modules/home/presentation/screens/home_categor_details_screen.dart';
+import '../../modules/movie/presentation/screens/movies_screen.dart';
 import '../../modules/home/presentation/screens/home_screen.dart';
 import '../../modules/home/presentation/screens/home_with_bottom_nav.dart';
-import '../../modules/movie/presentation/screens/movie_detail_screen.dart';
+import '../../modules/movie/presentation/screens/movie_player_screen.dart';
 import '../../modules/profile/presentation/screens/profile_screen.dart';
 import '../../modules/servers/business/entity/server.dart';
 import '../../modules/servers/presentation/screens/add_server_screen.dart';
@@ -147,15 +147,15 @@ class AppNav {
           },
           routes: [
             GoRoute(
-              path: RouteNames.homeCategoryDetailsScreen,
+              path: RouteNames.moviesScreen,
               builder: (context, state) {
-                return const HomeCategoryDetailsScreen();
+                return const MoviesScreen();
               }
             ),
             GoRoute(
-                path: RouteNames.movieDetailsScreen,
+                path: RouteNames.moviePlayerScreen,
                 builder: (context, state) {
-                  return const MovieDetailScreen();
+                  return const MoviePlayerScreen();
                 }
             ),
           ],

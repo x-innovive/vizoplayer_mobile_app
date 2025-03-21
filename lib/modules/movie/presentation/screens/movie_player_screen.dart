@@ -3,14 +3,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/widgets/appbars/app_app_bar.dart';
 
-class MovieDetailScreen extends ConsumerStatefulWidget {
-  const MovieDetailScreen({super.key});
+class MoviePlayerScreen extends ConsumerStatefulWidget {
+  const MoviePlayerScreen({super.key});
 
   @override
   ConsumerState createState() => _MovieDetailScreenState();
 }
 
-class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
+class _MovieDetailScreenState extends ConsumerState<MoviePlayerScreen> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
