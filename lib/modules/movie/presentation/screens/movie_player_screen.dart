@@ -4,7 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/widgets/appbars/app_app_bar.dart';
 import '../../../../core/widgets/utility/invalid_data_widget.dart';
 import '../../business/entity/movie.dart';
-import '../widgets/movie_video_player.dart';
+import '../widgets/chewie_movie_player.dart';
+import '../widgets/movie_player.dart';
 
 class MoviePlayerScreen extends ConsumerStatefulWidget {
   final Movie? movie;
@@ -23,11 +24,12 @@ class _MovieDetailScreenState extends ConsumerState<MoviePlayerScreen> {
       body: widget.movie == null
           ? const InvalidDataWidget(message: 'Invalid data')
           : SingleChildScrollView(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  MovieVideoPlayer(url: widget.movie?.url),
+                  // MovieVideoPlayer(url: widget.movie?.url),
+                  MoviePlayer(url: widget.movie?.url ?? ''),
                 ],
               ),
             ),
