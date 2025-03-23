@@ -28,8 +28,8 @@ class _MovieDetailScreenState extends ConsumerState<MoviePlayerScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // MovieVideoPlayer(url: widget.movie?.url),
-                  MoviePlayer(url: widget.movie?.url ?? ''),
+                  ChewieMoviePlayer(url: widget.movie?.url),
+                  // MoviePlayer(url: widget.movie?.url ?? ''),
                 ],
               ),
             ),

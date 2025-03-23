@@ -43,11 +43,17 @@ class _MovieVideoPlayerState extends ConsumerState<ChewieMoviePlayer> {
     );
     await _playerController.initialize();
     _playerController.addListener(() {
-      if (_playerController.value.isBuffering) {
-        ref.read(chewieBuffering.notifier).state = true;
-      } else {
-        /// here not geeting the callback
+      final isBuffering = _playerController.value.isBuffering;
+      final isPlaying = _playerController.value.isPlaying;
+      final position = _playerController.value.position;
+      final currentPosition = _playerController.value.position.inSeconds;
+      final length = _playerController.value.duration.inSeconds;
+
+      /// If buffering but then video starts playing, reset buffering to false
+      if (isPlaying) {
         ref.read(chewieBuffering.notifier).state = false;
+      } else {
+        ref.read(chewieBuffering.notifier).state = isBuffering;
       }
     });
     _chewieController = ChewieController(
@@ -61,10 +67,19 @@ class _MovieVideoPlayerState extends ConsumerState<ChewieMoviePlayer> {
       deviceOrientationsAfterFullScreen: [DeviceOrientation.portraitUp],
       deviceOrientationsOnEnterFullScreen: [DeviceOrientation.landscapeLeft],
       isLive: false,
+      showControlsOnInitialize: false,
+      autoInitialize: true,
+      customControls: const SizedBox(),
+      autoPlay: true,
     );
 
     /// mark provider as video controller has initialized
     ref.read(playerControllerInitialized.notifier).state = true;
+
+    WidgetsBinding.instance.addPostFrameCallback((v) async {
+      await Future.delayed(const Duration(seconds: 5));
+      _chewieController?.enterFullScreen();
+    });
   }
 
   @override
@@ -76,33 +91,46 @@ class _MovieVideoPlayerState extends ConsumerState<ChewieMoviePlayer> {
     }
     return AspectRatio(
       aspectRatio: 16 / 9,
-      child: Consumer(
-        builder: (context, ref, _) {
-          final videoControllerInitialized = ref.watch(playerControllerInitialized);
-          if (videoControllerInitialized == false) {
-            return const Center(child: CircularProgressIndicator(color: AppColors.subtitleColor));
-          }
-          return Stack(
-            children: [
-              Chewie(
-                controller: _chewieController!,
-              ),
-              Positioned(
-                top: 0, bottom: 0, right: 0, left: 0,
-                child: Consumer(
-                  builder: (context, ref, _) {
-                    final videoBuffering = ref.watch(chewieBuffering);
-                    if (videoBuffering) {
-                      return const CircularProgressIndicator(color: AppColors.subtitleColor);
-                    }
-                    return const SizedBox();
-                  }
-                ),
-              ),
-            ],
+      child: Consumer(builder: (context, ref, _) {
+        final videoControllerInitialized = ref.watch(playerControllerInitialized);
+        if (videoControllerInitialized == false) {
+          return const Center(
+            child: SizedBox(
+              height: 24,
+              width: 24,
+              child: CircularProgressIndicator(color: AppColors.red),
+            ),
           );
         }
-      ),
+        return Stack(
+          children: [
+            Chewie(
+              controller: _chewieController!,
+            ),
+            Positioned(
+              top: 0,
+              bottom: 0,
+              right: 0,
+              left: 0,
+              child: Consumer(builder: (context, ref, _) {
+                final videoBuffering = ref.watch(chewieBuffering);
+                if (videoBuffering) {
+                  return const Align(
+                    child: SizedBox(
+                      height: 24,
+                      width: 24,
+                      child: CircularProgressIndicator(
+                        color: AppColors.subtitleColor,
+                      ),
+                    ),
+                  );
+                }
+                return const SizedBox();
+              }),
+            ),
+          ],
+        );
+      }),
     );
   }
 }

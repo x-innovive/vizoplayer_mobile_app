@@ -40,6 +40,8 @@ class _MovieVideoPlayerState extends ConsumerState<MoviePlayer> {
       final isBuffering = _controller.value.isBuffering;
       final isPlaying = _controller.value.isPlaying;
       final position = _controller.value.position;
+      final currentPosition = _controller.value.position.inSeconds;
+      final length = _controller.value.duration.inSeconds;
 
       /// If buffering but then video starts playing, reset buffering to false
       if (isBuffering && isPlaying) {
@@ -134,7 +136,7 @@ class _MovieVideoPlayerState extends ConsumerState<MoviePlayer> {
         alignment: Alignment.center,
         children: [
           AspectRatio(
-            aspectRatio: _controller.value.aspectRatio,
+            aspectRatio: 16 / 9,
             child: VideoPlayer(_controller),
           ),
 
