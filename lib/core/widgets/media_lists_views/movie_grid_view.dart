@@ -6,14 +6,14 @@ import '../../resources/app_values.dart';
 import 'horizontal_movie_list_tile.dart';
 import 'title_and_see_all.dart';
 
-class HorizontalMovieList extends StatelessWidget {
+class MovieGridView extends StatelessWidget {
   final String title;
   final Function()? onSeeAllClick;
   final List<Movie> movieList;
   final double horizontalPadding;
   final Function(Movie)? onMovieTap;
 
-  const HorizontalMovieList({
+  const MovieGridView({
     super.key,
     required this.title,
     this.onSeeAllClick,
@@ -27,34 +27,33 @@ class HorizontalMovieList extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: horizontalPadding,
+          padding: const EdgeInsets.symmetric(
+            horizontal: AppValues.paddingNormal,
           ),
           child: TitleAndSeeAll(
             title: title,
-            onSeeAllTap: onSeeAllClick,
+            onSeeAllTap: () {},
           ),
         ),
         const SizedBox(height: AppValues.paddingSmall),
-        SizedBox(
-          height: 160,
-          child: ListView.builder(
-            itemCount: movieList.length,
-            padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-            physics: const BouncingScrollPhysics(),
-            scrollDirection: Axis.horizontal,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.only(
-                  right: 4,
-                ),
-                child: HorizontalMovieListTile(
-                  movie: movieList[index],
-                  onTap: onMovieTap,
-                ),
-              );
-            },
+        GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            childAspectRatio: .65,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
           ),
+          itemCount: movieList.length,
+          padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemBuilder: (context, index) {
+            return HorizontalMovieListTile(
+              movie: movieList[index],
+              onTap: onMovieTap,
+              ignoreHeight: true,
+            );
+          },
         ),
       ],
     );

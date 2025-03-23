@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/dummys/dummy_datas.dart';
+import '../../../../core/resources/app_values.dart';
 import '../../../../core/widgets/appbars/app_app_bar.dart';
+import '../../../../core/widgets/media_lists_views/movie_grid_view.dart';
+import '../../../../core/widgets/media_lists_views/title_and_see_all.dart';
 import '../../../../core/widgets/utility/invalid_data_widget.dart';
 import '../../business/entity/movie.dart';
 import '../widgets/chewie_movie_player.dart';
+import '../widgets/movie_description_widget.dart';
 import '../widgets/movie_player.dart';
 
 class MoviePlayerScreen extends ConsumerStatefulWidget {
@@ -23,16 +28,33 @@ class _MovieDetailScreenState extends ConsumerState<MoviePlayerScreen> {
       appBar: const AppAppBar(title: ''),
       body: widget.movie == null
           ? const InvalidDataWidget(message: 'Invalid data')
-          : SingleChildScrollView(
+          : Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ChewieMoviePlayer(url: widget.movie?.url),
+          // MoviePlayer(url: widget.movie?.url ?? ''),
+          const SizedBox(height: AppValues.paddingNormal),
+          Expanded(
+            child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ChewieMoviePlayer(url: widget.movie?.url),
-                  // MoviePlayer(url: widget.movie?.url ?? ''),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: AppValues.paddingNormal),
+                    child: MovieDescriptionWidget(),
+                  ),
+                  const SizedBox(height: AppValues.paddingLarge),
+                  MovieGridView(
+                      movieList: getMovieList(),
+                      horizontalPadding: AppValues.paddingNormal, title: 'More Like This',
+                  ),
                 ],
               ),
             ),
+          ),
+        ],
+      ),
     );
   }
 }
