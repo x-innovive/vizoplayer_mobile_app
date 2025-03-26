@@ -18,6 +18,7 @@ import '../../modules/servers/presentation/screens/edit_server_screen.dart';
 import '../../modules/servers/presentation/screens/server_list_screen.dart';
 import '../../modules/sign_in/presentation/screens/deactivated_account_screen.dart';
 import '../../modules/sign_in/presentation/screens/sign_in_screen.dart';
+import '../../modules/tv_shows/presentation/screens/tv_show_detail_screen.dart';
 import '../../modules/tv_shows/presentation/screens/tv_shows_screen.dart';
 import 'route_names.dart';
 
@@ -164,6 +165,12 @@ class AppNav {
               path: RouteNames.tvShowsScreen,
               builder: (context, state) {
                 return const TvShowsScreen();
+              },
+            ),
+            GoRoute(
+              path: RouteNames.tvShowsDetailScreen,
+              builder: (context, state) {
+                return TvShowDetailScreen(movie: state.extra as Movie?);
               },
             ),
           ],

@@ -34,4 +34,5 @@ class AppColors {
   static const deepOrange = Color(0xFFF9A00E);
   static const subtitleColor = Color(0xFFCACACA);
   static const scaffoldBlack = Color(0xFF141414);
+  static const dividerColor = Color(0xFF373737);
 }

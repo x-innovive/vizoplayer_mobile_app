@@ -26,7 +26,7 @@ class TitleAndSeeAll extends StatelessWidget {
           ),
         ),
         Visibility(
-          visible: hideSeeAllButton != false,
+          visible: hideSeeAllButton == null || hideSeeAllButton == false,
           child: InkWell(
             onTap: onSeeAllTap,
             child: Container(

@@ -28,8 +28,8 @@ class _TvShowsScreenState extends ConsumerState<TvShowsScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 4),
-            Padding(
-              padding: const EdgeInsets.only(left: AppValues.paddingNormal),
+            const Padding(
+              padding: EdgeInsets.only(left: AppValues.paddingNormal),
               child: CategoryTab(
                 // onCategoryTap: (category) {
                 //   AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.tvShowsScreen);
@@ -53,7 +53,7 @@ class _TvShowsScreenState extends ConsumerState<TvShowsScreen> {
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
                 AppNav.goRouter.push(
-                  RouteNames.homeScreen + RouteNames.movieDetailScreen,
+                  RouteNames.homeScreen + RouteNames.tvShowsDetailScreen,
                   extra: movie,
                 );
               },
@@ -66,7 +66,7 @@ class _TvShowsScreenState extends ConsumerState<TvShowsScreen> {
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
                 AppNav.goRouter.push(
-                  RouteNames.homeScreen + RouteNames.movieDetailScreen,
+                  RouteNames.homeScreen + RouteNames.tvShowsDetailScreen,
                   extra: movie,
                 );
               },
@@ -79,7 +79,7 @@ class _TvShowsScreenState extends ConsumerState<TvShowsScreen> {
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
                 AppNav.goRouter.push(
-                  RouteNames.homeScreen + RouteNames.movieDetailScreen,
+                  RouteNames.homeScreen + RouteNames.tvShowsDetailScreen,
                   extra: movie,
                 );
               },
@@ -92,7 +92,7 @@ class _TvShowsScreenState extends ConsumerState<TvShowsScreen> {
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
                 AppNav.goRouter.push(
-                  RouteNames.homeScreen + RouteNames.movieDetailScreen,
+                  RouteNames.homeScreen + RouteNames.tvShowsDetailScreen,
                   extra: movie,
                 );
               },
@@ -105,7 +105,7 @@ class _TvShowsScreenState extends ConsumerState<TvShowsScreen> {
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
                 AppNav.goRouter.push(
-                  RouteNames.homeScreen + RouteNames.movieDetailScreen,
+                  RouteNames.homeScreen + RouteNames.tvShowsDetailScreen,
                   extra: movie,
                 );
               },
@@ -118,7 +118,7 @@ class _TvShowsScreenState extends ConsumerState<TvShowsScreen> {
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
                 AppNav.goRouter.push(
-                  RouteNames.homeScreen + RouteNames.movieDetailScreen,
+                  RouteNames.homeScreen + RouteNames.tvShowsDetailScreen,
                   extra: movie,
                 );
               },

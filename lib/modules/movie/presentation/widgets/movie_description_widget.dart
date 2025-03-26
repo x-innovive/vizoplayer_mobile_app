@@ -4,6 +4,7 @@ import '../../../../core/resources/app_colors.dart';
 import '../../../../core/resources/app_values.dart';
 import '../../../../core/widgets/buttons/button_with_icon.dart';
 import '../../../../core/widgets/buttons/circle_icon_button.dart';
+import '../../../tv_shows/presentation/widgets/season_and_episode.dart';
 import 'genre_and_language.dart';
 import 'movie_atribute_widget.dart';
 import 'ratting_and_year.dart';
@@ -13,12 +14,14 @@ class MovieDescriptionWidget extends StatelessWidget {
   final Function() onPlay;
   final Function() onFav;
   final Function() onLike;
+  final bool? isTvShow;
 
   const MovieDescriptionWidget({
     super.key,
     required this.onPlay,
     required this.onFav,
     required this.onLike,
+    this.isTvShow,
   });
 
   @override
@@ -35,6 +38,9 @@ class MovieDescriptionWidget extends StatelessWidget {
         ),
         const SizedBox(height: AppValues.paddingNormal),
         const MovieAtributeWidget(alignment: MainAxisAlignment.start),
+        const SizedBox(height: AppValues.paddingSmall + 4),
+        if (isTvShow == true)
+          const SeasonAndEpisode(seasonSrt: 'Season 1', episodeSrt: "Episode 1"),
         const SizedBox(height: AppValues.paddingSmall + 4),
         const GenreAndLanguage(
           genre: 'violence',
