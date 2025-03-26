@@ -63,7 +63,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
                 AppNav.goRouter.push(
-                  RouteNames.homeScreen + RouteNames.moviePlayerScreen,
+                  RouteNames.homeScreen + RouteNames.movieDetailScreen,
                   extra: movie,
                 );
               },
@@ -82,7 +82,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
                 AppNav.goRouter.push(
-                  RouteNames.homeScreen + RouteNames.moviePlayerScreen,
+                  RouteNames.homeScreen + RouteNames.movieDetailScreen,
                   extra: movie,
                 );
               },
@@ -95,7 +95,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
                 AppNav.goRouter.push(
-                  RouteNames.homeScreen + RouteNames.moviePlayerScreen,
+                  RouteNames.homeScreen + RouteNames.movieDetailScreen,
                   extra: movie,
                 );
               },
@@ -108,7 +108,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
                 AppNav.goRouter.push(
-                  RouteNames.homeScreen + RouteNames.moviePlayerScreen,
+                  RouteNames.homeScreen + RouteNames.movieDetailScreen,
                   extra: movie,
                 );
               },
@@ -127,7 +127,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
                 AppNav.goRouter.push(
-                  RouteNames.homeScreen + RouteNames.moviePlayerScreen,
+                  RouteNames.homeScreen + RouteNames.movieDetailScreen,
                   extra: movie,
                 );
               },

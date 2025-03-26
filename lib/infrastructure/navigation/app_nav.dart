@@ -10,7 +10,7 @@ import '../../modules/movie/business/entity/movie.dart';
 import '../../modules/movie/presentation/screens/movies_screen.dart';
 import '../../modules/home/presentation/screens/home_screen.dart';
 import '../../modules/home/presentation/screens/home_with_bottom_nav.dart';
-import '../../modules/movie/presentation/screens/movie_player_screen.dart';
+import '../../modules/movie/presentation/screens/movie_detail_screen.dart';
 import '../../modules/profile/presentation/screens/profile_screen.dart';
 import '../../modules/servers/business/entity/server.dart';
 import '../../modules/servers/presentation/screens/add_server_screen.dart';
@@ -154,9 +154,9 @@ class AppNav {
               }
             ),
             GoRoute(
-                path: RouteNames.moviePlayerScreen,
+                path: RouteNames.movieDetailScreen,
                 builder: (context, state) {
-                  return MoviePlayerScreen(movie: state.extra as Movie?);
+                  return MovieDetailScreen(movie: state.extra as Movie?);
                 }
             ),
           ],

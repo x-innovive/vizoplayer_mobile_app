@@ -4,24 +4,24 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/dummys/dummy_datas.dart';
 import '../../../../core/resources/app_values.dart';
 import '../../../../core/widgets/appbars/app_app_bar.dart';
-import '../widgets/movie_cover.dart';
 import '../../../../core/widgets/media_lists_views/horizontal_movie_list.dart';
 import '../../../../core/widgets/tabs/category_tab.dart';
 import '../../../../infrastructure/navigation/app_nav.dart';
 import '../../../../infrastructure/navigation/route_names.dart';
+import '../../../movie/presentation/widgets/movie_cover.dart';
 
-class MoviesScreen extends ConsumerStatefulWidget {
-  const MoviesScreen({super.key});
+class TvShowsScreen extends ConsumerStatefulWidget {
+  const TvShowsScreen({super.key});
 
   @override
-  ConsumerState createState() => _HomeCategoryDetailsScreenState();
+  ConsumerState createState() => _TvShowsScreenState();
 }
 
-class _HomeCategoryDetailsScreenState extends ConsumerState<MoviesScreen> {
+class _TvShowsScreenState extends ConsumerState<TvShowsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppAppBar(title: 'Movies'),
+      appBar: const AppAppBar(title: 'TV Shows'),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(
@@ -32,7 +32,7 @@ class _HomeCategoryDetailsScreenState extends ConsumerState<MoviesScreen> {
               padding: const EdgeInsets.only(left: AppValues.paddingNormal),
               child: CategoryTab(
                 onCategoryTap: (category) {
-                  AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.moviesScreen);
+                  AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.tvShowsScreen);
                 },
               ),
             ),

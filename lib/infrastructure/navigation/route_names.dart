@@ -14,11 +14,12 @@ class RouteNames {
 
   static const homeScreen = '/home_screen';
   static const moviesScreen = '/movies_screen';
+  static const movieDetailScreen = '/movie_detail_screen';
+  static const tvShowsScreen = '/tv_shows_screen';
+  static const tvShowsDetailScreen = '/tv_shows_detail_screen';
 
   static const fireScreen = '/fire_screen';
   static const favouriteScreen = '/favourite_screen';
   static const profileScreen = '/profile_screen';
-
-  static const moviePlayerScreen = '/movie_player_screen';
 
 }

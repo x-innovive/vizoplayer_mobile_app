@@ -12,16 +12,16 @@ import '../widgets/chewie_movie_player.dart';
 import '../widgets/movie_description_widget.dart';
 import '../widgets/movie_player.dart';
 
-class MoviePlayerScreen extends ConsumerStatefulWidget {
+class MovieDetailScreen extends ConsumerStatefulWidget {
   final Movie? movie;
 
-  const MoviePlayerScreen({super.key, required this.movie});
+  const MovieDetailScreen({super.key, required this.movie});
 
   @override
   ConsumerState createState() => _MovieDetailScreenState();
 }
 
-class _MovieDetailScreenState extends ConsumerState<MoviePlayerScreen> {
+class _MovieDetailScreenState extends ConsumerState<MovieDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
