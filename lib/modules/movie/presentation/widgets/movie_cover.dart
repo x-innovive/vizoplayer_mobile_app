@@ -3,9 +3,11 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../resources/app_colors.dart';
-import '../../resources/app_values.dart';
-import '../buttons/button_with_icon.dart';
+import 'genre_and_language.dart';
+import 'movie_atribute_widget.dart';
+import '../../../../core/resources/app_colors.dart';
+import '../../../../core/resources/app_values.dart';
+import '../../../../core/widgets/buttons/button_with_icon.dart';
 
 class MovieCover extends StatelessWidget {
   final String assetPath;
@@ -44,47 +46,9 @@ class MovieCover extends StatelessWidget {
             ),
           ),
           const SizedBox(height: AppValues.paddingNormal - 2),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              ...['16+', 'HD', 'Duration: 50m'].map((e) {
-                return Container(
-                  margin: const EdgeInsets.symmetric(
-                    horizontal: 5,
-                  ),
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 2,
-                    horizontal: 8,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    borderRadius: BorderRadius.circular(AppValues.borderRadiusSmall),
-                    border: Border.all(
-                      width: 1,
-                      color: const Color(0xFF989899),
-                    ),
-                  ),
-                  alignment: Alignment.center,
-                  child: Text(e),
-                );
-              }),
-            ],
-          ),
+          const MovieAtributeWidget(),
           const SizedBox(height: AppValues.paddingNormal),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text('violence'),
-              const SizedBox(width: 8),
-              Icon(
-                Icons.circle,
-                size: 4,
-              ),
-              const SizedBox(width: 8),
-              Text('violence'),
-            ],
-          ),
+          const GenreAndLanguage(genre: 'violence', language: 'English'),
           const SizedBox(height: AppValues.paddingNormal - 4),
           SizedBox(
             width: (MediaQuery.of(context).size.width / 3) * 1.9,

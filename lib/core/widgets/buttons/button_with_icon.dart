@@ -24,7 +24,7 @@ class ButtonWithIcon extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(AppValues.borderRadiusSmall),
       child: Container(
-        height: 32,
+        height: 34,
         alignment: Alignment.center,
         padding: const EdgeInsets.symmetric(
           // vertical: 6,

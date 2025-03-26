@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/dummys/dummy_datas.dart';
 import '../../../../core/resources/app_values.dart';
 import '../../../../core/widgets/appbars/app_app_bar.dart';
-import '../../../../core/widgets/media/movie_cover.dart';
+import '../widgets/movie_cover.dart';
 import '../../../../core/widgets/media_lists_views/horizontal_movie_list.dart';
 import '../../../../core/widgets/tabs/category_tab.dart';
 import '../../../../infrastructure/navigation/app_nav.dart';

@@ -6,7 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/dummys/dummy_datas.dart';
 import '../../../../core/resources/app_values.dart';
 import '../../../../core/widgets/appbars/main_shell_app_bar.dart';
-import '../../../../core/widgets/media/movie_cover.dart';
+import '../../../movie/presentation/widgets/movie_cover.dart';
 import '../../../../core/widgets/media_lists_views/horizontal_audio_list.dart';
 import '../../../../core/widgets/media_lists_views/horizontal_movie_list.dart';
 import '../../../../core/widgets/media_lists_views/horizontal_tv_list.dart';

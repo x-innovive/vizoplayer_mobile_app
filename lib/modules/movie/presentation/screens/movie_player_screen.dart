@@ -29,32 +29,37 @@ class _MovieDetailScreenState extends ConsumerState<MoviePlayerScreen> {
       body: widget.movie == null
           ? const InvalidDataWidget(message: 'Invalid data')
           : Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ChewieMoviePlayer(url: widget.movie?.url),
-          // MoviePlayer(url: widget.movie?.url ?? ''),
-          const SizedBox(height: AppValues.paddingNormal),
-          Expanded(
-            child: SingleChildScrollView(
-              physics: const BouncingScrollPhysics(),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: AppValues.paddingNormal),
-                    child: MovieDescriptionWidget(),
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ChewieMoviePlayer(url: widget.movie?.url),
+                // MoviePlayer(url: widget.movie?.url ?? ''),
+                const SizedBox(height: AppValues.paddingNormal),
+                Expanded(
+                  child: SingleChildScrollView(
+                    physics: const BouncingScrollPhysics(),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: AppValues.paddingNormal),
+                          child: MovieDescriptionWidget(
+                            onPlay: () {},
+                            onFav: () {},
+                            onLike: () {},
+                          ),
+                        ),
+                        const SizedBox(height: AppValues.paddingLarge),
+                        MovieGridView(
+                          movieList: getMovieList(),
+                          horizontalPadding: AppValues.paddingNormal,
+                          title: 'More Like This',
+                        ),
+                      ],
+                    ),
                   ),
-                  const SizedBox(height: AppValues.paddingLarge),
-                  MovieGridView(
-                      movieList: getMovieList(),
-                      horizontalPadding: AppValues.paddingNormal, title: 'More Like This',
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ),
-        ],
-      ),
     );
   }
 }

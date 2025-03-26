@@ -97,7 +97,7 @@ class _MovieVideoPlayerState extends ConsumerState<ChewieMoviePlayer> {
       showControlsOnInitialize: false,
       autoInitialize: true,
       customControls: const SizedBox(),
-      autoPlay: true,
+      autoPlay: false,
     );
 
     /// mark provider as video controller has initialized
