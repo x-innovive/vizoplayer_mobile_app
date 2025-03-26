@@ -28,12 +28,12 @@ class _HomeCategoryDetailsScreenState extends ConsumerState<MoviesScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 4),
-            Padding(
-              padding: const EdgeInsets.only(left: AppValues.paddingNormal),
+            const Padding(
+              padding: EdgeInsets.only(left: AppValues.paddingNormal),
               child: CategoryTab(
-                onCategoryTap: (category) {
-                  AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.moviesScreen);
-                },
+                // onCategoryTap: (category) {
+                //   AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.moviesScreen);
+                // },
               ),
             ),
             const SizedBox(height: 16),

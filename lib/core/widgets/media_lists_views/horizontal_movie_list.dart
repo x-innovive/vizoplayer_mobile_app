@@ -12,6 +12,7 @@ class HorizontalMovieList extends StatelessWidget {
   final List<Movie> movieList;
   final double horizontalPadding;
   final Function(Movie)? onMovieTap;
+  final bool? hideSeeAllButton;
 
   const HorizontalMovieList({
     super.key,
@@ -20,6 +21,7 @@ class HorizontalMovieList extends StatelessWidget {
     required this.movieList,
     required this.horizontalPadding,
     this.onMovieTap,
+    this.hideSeeAllButton,
   });
 
   @override
@@ -33,6 +35,7 @@ class HorizontalMovieList extends StatelessWidget {
           child: TitleAndSeeAll(
             title: title,
             onSeeAllTap: onSeeAllClick,
+            hideSeeAllButton: hideSeeAllButton,
           ),
         ),
         const SizedBox(height: AppValues.paddingSmall),

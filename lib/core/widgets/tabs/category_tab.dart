@@ -1,10 +1,14 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
+import '../../../infrastructure/navigation/app_nav.dart';
+import '../../../infrastructure/navigation/route_names.dart';
 import '../../resources/app_values.dart';
 
 class CategoryTab extends StatelessWidget {
-  final Function(String)? onCategoryTap;
-  const CategoryTab({super.key, this.onCategoryTap});
+  // final Function(String)? onCategoryTap;
+  const CategoryTab({super.key, /*this.onCategoryTap*/});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +23,14 @@ class CategoryTab extends StatelessWidget {
               padding: const EdgeInsets.only(right: 8),
               child: InkWell(
                 onTap: () {
-                  onCategoryTap?.call(e);
+                  // onCategoryTap?.call(e);
+                  log(e);
+                  switch (e) {
+                    case 'Movies':
+                      AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.moviesScreen);
+                    case 'TV Shows':
+                      AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.tvShowsScreen);
+                  }
                 },
                 borderRadius: BorderRadius.circular(AppValues.borderRadiusMedium),
                 child: _container(

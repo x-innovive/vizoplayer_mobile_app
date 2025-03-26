@@ -31,9 +31,9 @@ class _TvShowsScreenState extends ConsumerState<TvShowsScreen> {
             Padding(
               padding: const EdgeInsets.only(left: AppValues.paddingNormal),
               child: CategoryTab(
-                onCategoryTap: (category) {
-                  AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.tvShowsScreen);
-                },
+                // onCategoryTap: (category) {
+                //   AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.tvShowsScreen);
+                // },
               ),
             ),
             const SizedBox(height: 16),
@@ -42,13 +42,14 @@ class _TvShowsScreenState extends ConsumerState<TvShowsScreen> {
                 horizontal: AppValues.paddingNormal,
               ),
               child: MovieCover(
-                assetPath: 'assets/temps/movie_covers/lordorthe.png',
+                assetPath: 'assets/temps/movie_covers/zila.png',
               ),
             ),
             const SizedBox(height: AppValues.paddingLarge),
             HorizontalMovieList(
-              title: 'Latest Movies',
+              title: 'Critically Acclaimed TV Shows',
               movieList: getMovieList(),
+              hideSeeAllButton: true,
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
                 AppNav.goRouter.push(
@@ -59,8 +60,9 @@ class _TvShowsScreenState extends ConsumerState<TvShowsScreen> {
             ),
             const SizedBox(height: AppValues.paddingNormal * 2),
             HorizontalMovieList(
-              title: 'Popular Movies',
+              title: 'Medical TV Dramas',
               movieList: getMovieList(),
+              hideSeeAllButton: true,
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
                 AppNav.goRouter.push(
@@ -71,8 +73,9 @@ class _TvShowsScreenState extends ConsumerState<TvShowsScreen> {
             ),
             const SizedBox(height: AppValues.paddingNormal * 2),
             HorizontalMovieList(
-              title: 'Today’s Pick for You',
+              title: 'Today’s Top Picks for You',
               movieList: getMovieList(),
+              hideSeeAllButton: true,
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
                 AppNav.goRouter.push(
@@ -83,8 +86,9 @@ class _TvShowsScreenState extends ConsumerState<TvShowsScreen> {
             ),
             const SizedBox(height: AppValues.paddingNormal * 2),
             HorizontalMovieList(
-              title: 'Comedy Movies',
+              title: 'US TV Shows',
               movieList: getMovieList(),
+              hideSeeAllButton: true,
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
                 AppNav.goRouter.push(
@@ -95,8 +99,9 @@ class _TvShowsScreenState extends ConsumerState<TvShowsScreen> {
             ),
             const SizedBox(height: AppValues.paddingNormal * 2),
             HorizontalMovieList(
-              title: 'Action Movies',
+              title: 'International TV Dramas',
               movieList: getMovieList(),
+              hideSeeAllButton: true,
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
                 AppNav.goRouter.push(
@@ -107,8 +112,9 @@ class _TvShowsScreenState extends ConsumerState<TvShowsScreen> {
             ),
             const SizedBox(height: AppValues.paddingNormal * 2),
             HorizontalMovieList(
-              title: 'Hollywood Movies',
+              title: 'Familiar TV Favourites',
               movieList: getMovieList(),
+              hideSeeAllButton: true,
               horizontalPadding: AppValues.paddingNormal,
               onMovieTap: (movie) {
                 AppNav.goRouter.push(
