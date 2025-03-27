@@ -10,6 +10,9 @@ import '../../../../core/widgets/utility/invalid_data_widget.dart';
 import '../../../movie/business/entity/movie.dart';
 import '../../../movie/presentation/widgets/chewie_movie_player.dart';
 import '../../../movie/presentation/widgets/movie_description_widget.dart';
+import '../providers/tv_shows_providers.dart';
+import 'tv_show_episodes_page.dart';
+import 'tv_show_more_like_this_page.dart';
 
 class TvShowDetailScreen extends ConsumerStatefulWidget {
   final Movie? movie;
@@ -23,10 +26,12 @@ class TvShowDetailScreen extends ConsumerStatefulWidget {
 class _TvShowDetailScreenState extends ConsumerState<TvShowDetailScreen>
     with SingleTickerProviderStateMixin {
   late final TabController _tabController;
+  late final PageController _pageController;
 
   @override
   void initState() {
     _tabController = TabController(length: 2, vsync: this);
+    _pageController = PageController(initialPage: 0, keepPage: true);
 
     super.initState();
   }
@@ -78,6 +83,9 @@ class _TvShowDetailScreenState extends ConsumerState<TvShowDetailScreen>
                           indicatorSize: TabBarIndicatorSize.label,
                           tabAlignment: TabAlignment.start,
                           isScrollable: true,
+                          onTap: (tab) {
+                            ref.read(tabIndexProvider.notifier).state = tab;
+                          },
                           tabs: const [
                             Tab(
                               text: "Episodes",
@@ -88,17 +96,19 @@ class _TvShowDetailScreenState extends ConsumerState<TvShowDetailScreen>
                           ],
                         ),
                         const PrimaryDivider(),
-                        DropdownButton<String?>(
-                          value: 'Episode 1',
-                          items: ['Episode 1', 'Episode 2', 'Episode 3'].map((e) {
-                            return DropdownMenuItem<String?>(
-                              value: e,
-                              child: Text(e),
-                            );
-                          }).toList(),
-                          onChanged: (v) {},
+                        Consumer(
+                          builder: (context, ref, _) {
+                            final index = ref.watch(tabIndexProvider);
+                            switch (index) {
+                              case 0:
+                                return const TvShowEpisodesPage();
+                              case 1:
+                                return const TvShowMoreLikeThisPage();
+                            }
+
+                            return Container();
+                          },
                         ),
-                        const PrimaryDivider(),
                         const SizedBox(height: AppValues.paddingLarge),
                       ],
                     ),

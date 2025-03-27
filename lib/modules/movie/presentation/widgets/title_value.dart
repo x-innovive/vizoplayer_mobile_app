@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class TitleValue extends StatelessWidget {
+class RichTitleValue extends StatelessWidget {
   final String title;
   final String value;
 
-  const TitleValue({
+  const RichTitleValue({
     super.key,
     required this.title,
     required this.value,
@@ -12,26 +12,18 @@ class TitleValue extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          '$title:',
-          style: const TextStyle(
-            color: Color(0xFFCACACA),
-          ),
+    return RichText(
+      text: TextSpan(
+        text: '$title:',
+        style: const TextStyle(
+          color: Color(0xFFCACACA),
         ),
-        const SizedBox(width: 4),
-        Expanded(
-          child: Text(
-            value,
-            style: const TextStyle(
-              color: Color(0xFFFBFFFF),
-            ),
-          ),
-        ),
-      ],
+        children: [
+          TextSpan(text: ' $value', style: const TextStyle(
+            color: Color(0xFFFBFFFF),
+          ),)
+        ],
+      ),
     );
   }
 }

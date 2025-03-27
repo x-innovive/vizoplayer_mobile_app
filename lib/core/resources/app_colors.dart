@@ -35,4 +35,5 @@ class AppColors {
   static const subtitleColor = Color(0xFFCACACA);
   static const scaffoldBlack = Color(0xFF141414);
   static const dividerColor = Color(0xFF373737);
+  static const dropDownBackground = Color(0xFF515151);
 }
