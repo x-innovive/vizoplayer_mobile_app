@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/resources/app_colors.dart';
 import '../../../../core/resources/app_values.dart';
 import '../../../../core/widgets/dividers/primary_divider.dart';
+import '../widgets/tv_show_episode_list_tile.dart';
 
 class TvShowEpisodesPage extends StatelessWidget {
   const TvShowEpisodesPage({super.key});
@@ -39,6 +40,15 @@ class TvShowEpisodesPage extends StatelessWidget {
         ),
         const SizedBox(height: AppValues.paddingSmall),
         const PrimaryDivider(),
+        const SizedBox(height: AppValues.paddingNormal),
+        ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: 5,
+          itemBuilder: (context, index) {
+            return const TvShowEpisodeListTile();
+          },
+        ),
       ],
     );
   }

@@ -57,6 +57,7 @@ flutter:
     - assets/temps/movie_covers/
     - assets/temps/tvs/
     - assets/temps/audios/
+    - assets/temps/tv_show/
 
 
   # fonts
