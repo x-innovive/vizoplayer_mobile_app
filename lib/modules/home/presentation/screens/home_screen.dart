@@ -42,24 +42,31 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             const Padding(
               padding: EdgeInsets.only(left: AppValues.paddingNormal),
               child: CategoryTab(
-                // onCategoryTap: (category) {
-                //   log(category);
-                //   switch (category) {
-                //     case 'Movies':
-                //       AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.moviesScreen);
-                //     case 'TV Shows':
-                //       AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.tvShowsScreen);
-                //   }
-                // },
-              ),
+                  // onCategoryTap: (category) {
+                  //   log(category);
+                  //   switch (category) {
+                  //     case 'Movies':
+                  //       AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.moviesScreen);
+                  //     case 'TV Shows':
+                  //       AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.tvShowsScreen);
+                  //   }
+                  // },
+                  ),
             ),
             const SizedBox(height: 16),
-            const Padding(
-              padding: EdgeInsets.symmetric(
+            Padding(
+              padding: const EdgeInsets.symmetric(
                 horizontal: AppValues.paddingNormal,
               ),
               child: MovieCover(
                 assetPath: 'assets/temps/movie_covers/joker.png',
+                onFavTap: () {},
+                onPlayTap: () {
+                  AppNav.goRouter.push(
+                    RouteNames.homeScreen + RouteNames.movieDetailScreen,
+                    extra: getMovieList().first,
+                  );
+                },
               ),
             ),
             const SizedBox(height: AppValues.paddingLarge),

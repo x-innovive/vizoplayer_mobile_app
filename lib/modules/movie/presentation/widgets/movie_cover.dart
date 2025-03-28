@@ -11,8 +11,15 @@ import '../../../../core/widgets/buttons/button_with_icon.dart';
 
 class MovieCover extends StatelessWidget {
   final String assetPath;
+  final Function()? onPlayTap;
+  final Function()? onFavTap;
 
-  const MovieCover({super.key, required this.assetPath});
+  const MovieCover({
+    super.key,
+    required this.assetPath,
+    this.onPlayTap,
+    this.onFavTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -57,9 +64,7 @@ class MovieCover extends StatelessWidget {
                 Expanded(
                   child: ButtonWithIcon(
                     title: 'Play',
-                    onTap: () {
-                      log('Play');
-                    },
+                    onTap: onPlayTap,
                     icon: const Icon(
                       Icons.play_arrow,
                       color: AppColors.scaffoldBlack,
@@ -72,9 +77,7 @@ class MovieCover extends StatelessWidget {
                 Expanded(
                   child: ButtonWithIcon(
                     title: 'My List',
-                    onTap: () {
-                      log('My List');
-                    },
+                    onTap: onFavTap,
                     icon: const Icon(
                       CupertinoIcons.suit_heart,
                       size: 20,

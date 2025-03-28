@@ -39,12 +39,19 @@ class _HomeCategoryDetailsScreenState extends ConsumerState<MoviesScreen> {
               ),
             ),
             const SizedBox(height: 16),
-            const Padding(
-              padding: EdgeInsets.symmetric(
+            Padding(
+              padding: const EdgeInsets.symmetric(
                 horizontal: AppValues.paddingNormal,
               ),
               child: MovieCover(
                 assetPath: 'assets/temps/movie_covers/lordorthe.png',
+                onPlayTap: () {
+                  AppNav.goRouter.push(
+                    RouteNames.homeScreen + RouteNames.movieDetailScreen,
+                    extra: getMovieList().first,
+                  );
+                },
+                onFavTap: () {},
               ),
             ),
             const SizedBox(height: AppValues.paddingLarge),
