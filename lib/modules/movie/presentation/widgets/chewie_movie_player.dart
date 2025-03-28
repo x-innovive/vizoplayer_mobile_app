@@ -10,15 +10,15 @@ import 'package:video_player/video_player.dart';
 import '../../../../core/resources/app_colors.dart';
 import '../../../../core/resources/app_values.dart';
 
-final playerControllerInitialized = StateProvider.autoDispose((ref) => false);
+final playerControllerInitialized = StateProvider.autoDispose.family((ref, url) => false);
 
 // Providers for state management
-final isPlayingProvider = StateProvider<bool>((ref) => false);
-final isBufferingProvider = StateProvider<bool>((ref) => false);
-final isMutedProvider = StateProvider<bool>((ref) => false);
-final isFullScreenProvider = StateProvider<bool>((ref) => false);
-final videoPositionProvider = StateProvider<Duration>((ref) => Duration.zero);
-final videoDurationProvider = StateProvider<Duration>((ref) => Duration.zero);
+final isPlayingProvider = StateProvider.autoDispose.family<bool, String>((ref, url) => false);
+final isBufferingProvider = StateProvider.autoDispose.family<bool, String>((ref, url) => false);
+final isMutedProvider = StateProvider.autoDispose.family<bool, String>((ref, url) => false);
+final isFullScreenProvider = StateProvider.autoDispose.family<bool, String>((ref, url) => false);
+final videoPositionProvider = StateProvider.autoDispose.family<Duration, String>((ref, url) => Duration.zero);
+final videoDurationProvider = StateProvider.autoDispose.family<Duration, String>((ref, url) => Duration.zero);
 
 class ChewieMoviePlayer extends ConsumerStatefulWidget {
   final String? url;
@@ -56,7 +56,7 @@ class _MovieVideoPlayerState extends ConsumerState<ChewieMoviePlayer> {
       Uri.parse(widget.url ?? ''),
     );
     await _playerController.initialize();
-    ref.read(videoDurationProvider.notifier).state = _playerController.value.duration;
+    ref.read(videoDurationProvider(widget.url ?? '').notifier).state = _playerController.value.duration;
     _playerController.addListener(() {
       log('Listening');
       final isBuffering = _playerController.value.isBuffering;
@@ -67,22 +67,22 @@ class _MovieVideoPlayerState extends ConsumerState<ChewieMoviePlayer> {
 
       /// If buffering but then video starts playing, reset buffering to false
       if (isPlaying) {
-        ref.read(isBufferingProvider.notifier).state = false;
+        ref.read(isBufferingProvider(widget.url ?? '').notifier).state = false;
       } else {
-        ref.read(isBufferingProvider.notifier).state = isBuffering;
+        ref.read(isBufferingProvider(widget.url ?? '').notifier).state = isBuffering;
       }
 
       /// If seeking completes, reset buffering state
       if (!isBuffering && position.inMilliseconds > 0) {
-        ref.read(isBufferingProvider.notifier).state = false;
+        ref.read(isBufferingProvider(widget.url ?? '').notifier).state = false;
       }
 
-      ref.read(isPlayingProvider.notifier).state = isPlaying;
+      ref.read(isPlayingProvider(widget.url ?? '').notifier).state = isPlaying;
 
       // Position update for progress bar
-      ref.read(videoPositionProvider.notifier).state = position;
+      ref.read(videoPositionProvider(widget.url ?? '').notifier).state = position;
     });
-    
+
     _chewieController = ChewieController(
       videoPlayerController: _playerController,
       aspectRatio: 16 / 9,
@@ -101,7 +101,7 @@ class _MovieVideoPlayerState extends ConsumerState<ChewieMoviePlayer> {
     );
 
     /// mark provider as video controller has initialized
-    ref.read(playerControllerInitialized.notifier).state = true;
+    ref.read(playerControllerInitialized(widget.url ?? '').notifier).state = true;
   }
 
   void _togglePlayPause() {
@@ -120,14 +120,14 @@ class _MovieVideoPlayerState extends ConsumerState<ChewieMoviePlayer> {
   }
 
   void _toggleMute() {
-    final isMuted = ref.read(isMutedProvider);
+    final isMuted = ref.read(isMutedProvider(widget.url ?? ''));
     _playerController.setVolume(isMuted ? 1.0 : 0.0);
-    ref.read(isMutedProvider.notifier).state = !isMuted;
+    ref.read(isMutedProvider(widget.url ?? '').notifier).state = !isMuted;
     _resetHideControlsTimer();
   }
 
   void _toggleFullScreen() {
-    final isFullScreen = ref.read(isFullScreenProvider);
+    final isFullScreen = ref.read(isFullScreenProvider(widget.url ?? ''));
     if (isFullScreen) {
       _chewieController?.exitFullScreen();
       // SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -135,7 +135,7 @@ class _MovieVideoPlayerState extends ConsumerState<ChewieMoviePlayer> {
       _chewieController?.enterFullScreen();
       // SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
     }
-    ref.read(isFullScreenProvider.notifier).state = !isFullScreen;
+    ref.read(isFullScreenProvider(widget.url ?? '').notifier).state = !isFullScreen;
     _resetHideControlsTimer();
   }
 
@@ -159,11 +159,11 @@ class _MovieVideoPlayerState extends ConsumerState<ChewieMoviePlayer> {
 
   @override
   Widget build(BuildContext context) {
-    final isBuffering = ref.watch(isBufferingProvider);
-    final isPlaying = ref.watch(isPlayingProvider);
-    final isMuted = ref.watch(isMutedProvider);
-    final position = ref.watch(videoPositionProvider);
-    final duration = ref.watch(videoDurationProvider);
+    final isBuffering = ref.watch(isBufferingProvider(widget.url ?? ''));
+    final isPlaying = ref.watch(isPlayingProvider(widget.url ?? ''));
+    final isMuted = ref.watch(isMutedProvider(widget.url ?? ''));
+    final position = ref.watch(videoPositionProvider(widget.url ?? ''));
+    final duration = ref.watch(videoDurationProvider(widget.url ?? ''));
 
     if (widget.url == null) {
       return const Center(
@@ -173,7 +173,7 @@ class _MovieVideoPlayerState extends ConsumerState<ChewieMoviePlayer> {
     return AspectRatio(
       aspectRatio: 16 / 9,
       child: Consumer(builder: (context, ref, _) {
-        final videoControllerInitialized = ref.watch(playerControllerInitialized);
+        final videoControllerInitialized = ref.watch(playerControllerInitialized(widget.url ?? ''));
         if (videoControllerInitialized == false) {
           return const Center(
             child: SizedBox(
@@ -258,7 +258,7 @@ class _MovieVideoPlayerState extends ConsumerState<ChewieMoviePlayer> {
                     onChanged: (value) {
                       final newPosition = Duration(milliseconds: value.toInt());
                       _playerController.seekTo(newPosition);
-                      ref.read(videoPositionProvider.notifier).state = newPosition;
+                      ref.read(videoPositionProvider(widget.url ?? '').notifier).state = newPosition;
                       _resetHideControlsTimer();
                     },
                     activeColor: Colors.red,
