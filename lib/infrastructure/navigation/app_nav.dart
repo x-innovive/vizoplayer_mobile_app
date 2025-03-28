@@ -6,6 +6,8 @@ import '../../modules/fire/presentation/screens/fire_screen.dart';
 import '../../modules/get_started/presentation/screens/get_started_screen.dart';
 import '../../modules/get_started/presentation/screens/nowhere_screen.dart';
 import '../../modules/get_started/presentation/screens/splash_sscreen.dart';
+import '../../modules/live_tv/presentation/screens/live_tv_detail_screen.dart';
+import '../../modules/live_tv/presentation/screens/live_tv_screen.dart';
 import '../../modules/movie/business/entity/movie.dart';
 import '../../modules/movie/presentation/screens/movies_screen.dart';
 import '../../modules/home/presentation/screens/home_screen.dart';
@@ -171,6 +173,18 @@ class AppNav {
               path: RouteNames.tvShowsDetailScreen,
               builder: (context, state) {
                 return TvShowDetailScreen(movie: state.extra as Movie?);
+              },
+            ),
+            GoRoute(
+              path: RouteNames.liveTvScreen,
+              builder: (context, state) {
+                return const LiveTvScreen();
+              },
+            ),
+            GoRoute(
+              path: RouteNames.liveTvDetailScreen,
+              builder: (context, state) {
+                return const LiveTvDetailsScreen();
               },
             ),
           ],

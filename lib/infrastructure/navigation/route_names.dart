@@ -17,6 +17,8 @@ class RouteNames {
   static const movieDetailScreen = '/movie_detail_screen';
   static const tvShowsScreen = '/tv_shows_screen';
   static const tvShowsDetailScreen = '/tv_shows_detail_screen';
+  static const liveTvScreen = '/live_tv_screen';
+  static const liveTvDetailScreen = '/live_tv_detail_screen';
 
   static const fireScreen = '/fire_screen';
   static const favouriteScreen = '/favourite_screen';

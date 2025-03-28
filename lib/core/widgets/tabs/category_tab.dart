@@ -21,7 +21,7 @@ class CategoryTab extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          ...['Movies', 'TV Shows', 'Video Club'].map((e) {
+          ...['Movies', 'TV Shows', 'Video Club', 'Live TV'].map((e) {
             return Padding(
               padding: const EdgeInsets.only(right: 8),
               child: InkWell(
@@ -37,6 +37,8 @@ class CategoryTab extends StatelessWidget {
                       );
                     case 'TV Shows':
                       AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.tvShowsScreen);
+                    case 'Live TV':
+                      AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.liveTvScreen);
                   }
                 },
                 borderRadius: BorderRadius.circular(AppValues.borderRadiusMedium),
@@ -51,24 +53,24 @@ class CategoryTab extends StatelessWidget {
               ),
             );
           }),
-          _container(
-            child: const Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Text(
-                  'All',
-                  style: TextStyle(
-                    color: Color(0xFFCACACA),
-                  ),
-                ),
-                SizedBox(width: 4),
-                Icon(
-                  size: 20,
-                  Icons.keyboard_arrow_down_outlined,
-                ),
-              ],
-            ),
-          )
+          // _container(
+          //   child: const Row(
+          //     crossAxisAlignment: CrossAxisAlignment.center,
+          //     children: [
+          //       Text(
+          //         'All',
+          //         style: TextStyle(
+          //           color: Color(0xFFCACACA),
+          //         ),
+          //       ),
+          //       SizedBox(width: 4),
+          //       Icon(
+          //         size: 20,
+          //         Icons.keyboard_arrow_down_outlined,
+          //       ),
+          //     ],
+          //   ),
+          // )
         ],
       ),
     );
