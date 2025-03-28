@@ -8,7 +8,10 @@ import '../../resources/app_values.dart';
 
 class CategoryTab extends StatelessWidget {
   // final Function(String)? onCategoryTap;
-  const CategoryTab({super.key, /*this.onCategoryTap*/});
+  const CategoryTab({
+    super.key,
+    /*this.onCategoryTap*/
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +30,11 @@ class CategoryTab extends StatelessWidget {
                   log(e);
                   switch (e) {
                     case 'Movies':
-                      AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.moviesScreen);
+                    case 'Video Club':
+                      AppNav.goRouter.push(
+                        RouteNames.homeScreen + RouteNames.moviesScreen,
+                        extra: e,
+                      );
                     case 'TV Shows':
                       AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.tvShowsScreen);
                   }

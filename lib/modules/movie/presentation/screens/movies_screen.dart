@@ -11,7 +11,9 @@ import '../../../../infrastructure/navigation/app_nav.dart';
 import '../../../../infrastructure/navigation/route_names.dart';
 
 class MoviesScreen extends ConsumerStatefulWidget {
-  const MoviesScreen({super.key});
+  final String title;
+
+  const MoviesScreen({super.key, required this.title});
 
   @override
   ConsumerState createState() => _HomeCategoryDetailsScreenState();
@@ -21,7 +23,7 @@ class _HomeCategoryDetailsScreenState extends ConsumerState<MoviesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppAppBar(title: 'Movies'),
+      appBar: AppAppBar(title: widget.title),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Column(

@@ -152,7 +152,7 @@ class AppNav {
             GoRoute(
               path: RouteNames.moviesScreen,
               builder: (context, state) {
-                return const MoviesScreen();
+                return MoviesScreen(title: state.extra as String);
               },
             ),
             GoRoute(
