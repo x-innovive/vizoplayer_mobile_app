@@ -37,12 +37,19 @@ class _TvShowsScreenState extends ConsumerState<TvShowsScreen> {
               ),
             ),
             const SizedBox(height: 16),
-            const Padding(
-              padding: EdgeInsets.symmetric(
+            Padding(
+              padding: const EdgeInsets.symmetric(
                 horizontal: AppValues.paddingNormal,
               ),
               child: MovieCover(
                 assetPath: 'assets/temps/movie_covers/zila.png',
+                onFavTap: () {},
+                onPlayTap: () {
+                  AppNav.goRouter.push(
+                    RouteNames.homeScreen + RouteNames.tvShowsDetailScreen,
+                    extra: getMovieList().first,
+                  );
+                },
               ),
             ),
             const SizedBox(height: AppValues.paddingLarge),
