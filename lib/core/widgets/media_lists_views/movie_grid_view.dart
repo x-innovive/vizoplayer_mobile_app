@@ -26,16 +26,22 @@ class MovieGridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppValues.paddingNormal,
-          ),
-          child: TitleAndSeeAll(
-            title: title,
-            onSeeAllTap: () {},
+        Visibility(
+          visible: title.isNotEmpty,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppValues.paddingNormal,
+            ),
+            child: TitleAndSeeAll(
+              title: title,
+              onSeeAllTap: () {},
+            ),
           ),
         ),
-        const SizedBox(height: AppValues.paddingSmall),
+        Visibility(
+          visible: title.isNotEmpty,
+          child: const SizedBox(height: AppValues.paddingSmall),
+        ),
         GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
