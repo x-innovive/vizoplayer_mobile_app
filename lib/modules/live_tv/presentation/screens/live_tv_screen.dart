@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/dummys/dummy_datas.dart';
 import '../../../../core/resources/app_values.dart';
 import '../../../../core/widgets/appbars/app_app_bar.dart';
+import '../../../../infrastructure/navigation/app_nav.dart';
+import '../../../../infrastructure/navigation/route_names.dart';
 import '../widgets/live_tv_cover.dart';
 import '../widgets/live_tv_filter_button.dart';
 import '../widgets/live_tv_filter_dialog.dart';
@@ -64,6 +66,11 @@ class _LiveTvScreenState extends ConsumerState<LiveTvScreen> {
                 itemBuilder: (context, index) {
                   return LiveTvListTile(
                     liveTv: tvList[index],
+                    onTap: () {
+                      AppNav.goRouter.push(
+                        RouteNames.homeScreen + RouteNames.liveTvDetailScreen,
+                      );
+                    },
                   );
                 },
               ),
