@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/dummys/dummy_datas.dart';
-import '../../../../core/resources/app_colors.dart';
 import '../../../../core/resources/app_values.dart';
 import '../../../../core/widgets/appbars/app_app_bar.dart';
 import '../widgets/live_tv_cover.dart';
+import '../widgets/live_tv_filter_button.dart';
 import '../widgets/live_tv_filter_dialog.dart';
 import '../widgets/live_tv_list_tile.dart';
 
@@ -40,7 +40,8 @@ class _LiveTvScreenState extends ConsumerState<LiveTvScreen> {
                       ),
                     ),
                   ),
-                  InkWell(
+                  LiveTvFilterButton(
+                    title: 'Filters',
                     onTap: () async {
                       await showDialog(
                         context: context,
@@ -52,30 +53,6 @@ class _LiveTvScreenState extends ConsumerState<LiveTvScreen> {
                         },
                       );
                     },
-                    child: Ink(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: AppValues.paddingSmall + 4,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                          color: AppColors.filledColor,
-                          borderRadius: BorderRadius.circular(AppValues.borderRadiusSmall),
-                          border: Border.all(
-                            color: AppColors.dividerColor,
-                            width: 1,
-                          )),
-                      child: const Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text('Filters'),
-                          SizedBox(width: 4),
-                          Icon(
-                            Icons.keyboard_arrow_down_outlined,
-                            size: 18,
-                          ),
-                        ],
-                      ),
-                    ),
                   ),
                 ],
               ),
