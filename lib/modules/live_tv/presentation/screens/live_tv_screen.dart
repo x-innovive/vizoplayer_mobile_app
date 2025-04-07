@@ -6,6 +6,7 @@ import '../../../../core/resources/app_colors.dart';
 import '../../../../core/resources/app_values.dart';
 import '../../../../core/widgets/appbars/app_app_bar.dart';
 import '../widgets/live_tv_cover.dart';
+import '../widgets/live_tv_filter_dialog.dart';
 import '../widgets/live_tv_list_tile.dart';
 
 class LiveTvScreen extends ConsumerStatefulWidget {
@@ -40,7 +41,17 @@ class _LiveTvScreenState extends ConsumerState<LiveTvScreen> {
                     ),
                   ),
                   InkWell(
-                    onTap: () {},
+                    onTap: () async {
+                      await showDialog(
+                        context: context,
+                        builder: (context) {
+                          return LiveTvFilterDialog(
+                            onCategorySelect: () {},
+                            onCountrySelect: () {},
+                          );
+                        },
+                      );
+                    },
                     child: Ink(
                       padding: const EdgeInsets.symmetric(
                         horizontal: AppValues.paddingSmall + 4,
