@@ -11,6 +11,7 @@ import '../../../movie/presentation/widgets/chewie_movie_player.dart';
 import '../widgets/live_tv_description_widget.dart';
 import '../widgets/live_tv_filter_button.dart';
 import '../widgets/live_tv_filter_dialog.dart';
+import '../widgets/tv_guide_tile.dart';
 
 class LiveTvDetailsScreen extends ConsumerStatefulWidget {
   const LiveTvDetailsScreen({super.key});
@@ -39,7 +40,7 @@ class _LiveTvDetailsScreenState extends ConsumerState<LiveTvDetailsScreen> {
                   const LiveTvDescriptionWidget(),
                   // const SizedBox(height: AppValues.paddingNormal),
                   // PrimaryDivider(),
-                  const SizedBox(height: AppValues.paddingNormal + 4),
+                  // const SizedBox(height: AppValues.paddingNormal + 4),
                   Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: AppValues.paddingNormal,
@@ -72,7 +73,16 @@ class _LiveTvDetailsScreenState extends ConsumerState<LiveTvDetailsScreen> {
                       ],
                     ),
                   ),
-                  const SizedBox(height: AppValues.paddingNormal + 4),
+                  const SizedBox(height: 4),
+                  ListView.builder(
+                    itemCount: 10,
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.all(AppValues.paddingNormal),
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return TvGuideTile(isSelected: index == 3);
+                    },
+                  ),
                 ],
               ),
             ),

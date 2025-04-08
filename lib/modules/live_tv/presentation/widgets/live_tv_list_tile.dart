@@ -19,7 +19,7 @@ class LiveTvListTile extends StatelessWidget {
       padding: const EdgeInsets.all(AppValues.paddingNormal),
       margin: const EdgeInsets.only(bottom: AppValues.paddingSmall),
       decoration: BoxDecoration(
-        color: AppColors.dropDownBackground,
+        color: const Color(0xFF414141),
         borderRadius: BorderRadius.circular(AppValues.borderRadiusSmall),
       ),
       child: InkWell(

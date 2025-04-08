@@ -62,7 +62,7 @@ class _LiveTvScreenState extends ConsumerState<LiveTvScreen> {
               ListView.builder(
                 itemCount: tvList.length,
                 shrinkWrap: true,
-                primary: false,
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return LiveTvListTile(
                     liveTv: tvList[index],
