@@ -15,10 +15,11 @@ dependencies:
   http: ^1.2.1
   dio: ^5.8.0+1
 
-  # UI design
+  # Widgets
   cached_network_image: ^3.4.1
   cupertino_icons: ^1.0.6
   go_router: ^14.8.1
+  syncfusion_flutter_datepicker: ^29.1.37
 
   # Annotation
   riverpod_annotation: ^2.3.5

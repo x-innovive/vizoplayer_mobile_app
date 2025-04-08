@@ -11,6 +11,7 @@ import '../../../movie/presentation/widgets/chewie_movie_player.dart';
 import '../widgets/live_tv_description_widget.dart';
 import '../widgets/live_tv_filter_button.dart';
 import '../widgets/live_tv_filter_dialog.dart';
+import '../widgets/tv_guide_date_picker.dart';
 import '../widgets/tv_guide_tile.dart';
 
 class LiveTvDetailsScreen extends ConsumerStatefulWidget {
@@ -62,10 +63,7 @@ class _LiveTvDetailsScreenState extends ConsumerState<LiveTvDetailsScreen> {
                             await showDialog(
                               context: context,
                               builder: (context) {
-                                return LiveTvFilterDialog(
-                                  onCategorySelect: () {},
-                                  onCountrySelect: () {},
-                                );
+                                return const TvGuideDatePicker();
                               },
                             );
                           },
