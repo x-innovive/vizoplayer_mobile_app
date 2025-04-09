@@ -7,7 +7,12 @@ import '../../../../core/resources/app_values.dart';
 import '../../../../infrastructure/navigation/app_nav.dart';
 
 class TvGuideDatePicker extends StatelessWidget {
-  const TvGuideDatePicker({super.key});
+  final Function(DateTime?) onPickedDate;
+
+  const TvGuideDatePicker({
+    super.key,
+    required this.onPickedDate,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +59,27 @@ class TvGuideDatePicker extends StatelessWidget {
                 ),
                 child: SfDateRangePicker(
                   backgroundColor: AppColors.scaffoldBlack,
+                  allowViewNavigation: false,
+                  enablePastDates: false,
+                  headerStyle: const DateRangePickerHeaderStyle(
+                    backgroundColor: AppColors.scaffoldBlack,
+                    textAlign: TextAlign.center,
+                  ),
+                  selectionColor: AppColors.red,
+                  selectionRadius: 2,
+                  selectionShape: DateRangePickerSelectionShape.rectangle,
+                  showActionButtons: true,
+                  selectionMode: DateRangePickerSelectionMode.single,
+                  todayHighlightColor: AppColors.red,
+                  showTodayButton: false,
+                  showNavigationArrow: true,
+                  onCancel: () {
+                    AppNav.goRouter.pop();
+                  },
+                  onSubmit: (date) {
+                    onPickedDate(date as DateTime?);
+                    AppNav.goRouter.pop();
+                  },
                 ),
               ),
             ),

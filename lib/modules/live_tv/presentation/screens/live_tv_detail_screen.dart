@@ -1,16 +1,14 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../../core/resources/app_colors.dart';
+import '../../../../core/extentions/string_extension.dart';
 import '../../../../core/resources/app_values.dart';
 import '../../../../core/widgets/appbars/app_app_bar.dart';
-import '../../../../core/widgets/buttons/button_with_icon.dart';
-import '../../../../core/widgets/buttons/circle_icon_button.dart';
-import '../../../../core/widgets/dividers/primary_divider.dart';
 import '../../../movie/presentation/widgets/chewie_movie_player.dart';
 import '../widgets/live_tv_description_widget.dart';
 import '../widgets/live_tv_filter_button.dart';
-import '../widgets/live_tv_filter_dialog.dart';
 import '../widgets/tv_guide_date_picker.dart';
 import '../widgets/tv_guide_tile.dart';
 
@@ -63,7 +61,11 @@ class _LiveTvDetailsScreenState extends ConsumerState<LiveTvDetailsScreen> {
                             await showDialog(
                               context: context,
                               builder: (context) {
-                                return const TvGuideDatePicker();
+                                return TvGuideDatePicker(
+                                  onPickedDate: (pickedDate) {
+                                    pickedDate?.toString().log();
+                                  },
+                                );
                               },
                             );
                           },

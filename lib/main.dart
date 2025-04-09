@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:vizoplayer/core/resources/app_strings.dart';
-import 'package:vizoplayer/infrastructure/navigation/app_nav.dart';
+import 'package:flutter/services.dart';
+import 'core/resources/app_strings.dart';
+import 'infrastructure/navigation/app_nav.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'core/themes/app_themes.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await setScreenOrientation();
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -25,6 +27,13 @@ class MyApp extends StatelessWidget {
       scaffoldMessengerKey: AppNav.scaffoldMessengerKey,
     );
   }
+}
+
+Future<void> setScreenOrientation() async {
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
 }
 
 //  Future<void> _updateImage(ImageProvider provider) async {
