@@ -4,15 +4,18 @@ import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../../../../core/resources/app_colors.dart';
 import '../../../../core/resources/app_values.dart';
+import '../../../../core/widgets/buttons/red_button.dart';
 import '../../../../infrastructure/navigation/app_nav.dart';
 
 class TvGuideDatePicker extends StatelessWidget {
   final Function(DateTime?) onPickedDate;
 
-  const TvGuideDatePicker({
+  TvGuideDatePicker({
     super.key,
     required this.onPickedDate,
   });
+
+  final _pickerController = DateRangePickerController();
 
   @override
   Widget build(BuildContext context) {
@@ -57,29 +60,65 @@ class TvGuideDatePicker extends StatelessWidget {
                     width: 1,
                   ),
                 ),
-                child: SfDateRangePicker(
-                  backgroundColor: AppColors.scaffoldBlack,
-                  allowViewNavigation: false,
-                  enablePastDates: false,
-                  headerStyle: const DateRangePickerHeaderStyle(
-                    backgroundColor: AppColors.scaffoldBlack,
-                    textAlign: TextAlign.center,
-                  ),
-                  selectionColor: AppColors.red,
-                  selectionRadius: 2,
-                  selectionShape: DateRangePickerSelectionShape.rectangle,
-                  showActionButtons: true,
-                  selectionMode: DateRangePickerSelectionMode.single,
-                  todayHighlightColor: AppColors.red,
-                  showTodayButton: false,
-                  showNavigationArrow: true,
-                  onCancel: () {
-                    AppNav.goRouter.pop();
-                  },
-                  onSubmit: (date) {
-                    onPickedDate(date as DateTime?);
-                    AppNav.goRouter.pop();
-                  },
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: SfDateRangePicker(
+                        controller: _pickerController,
+                        backgroundColor: AppColors.scaffoldBlack,
+                        allowViewNavigation: false,
+                        enablePastDates: false,
+                        headerStyle: const DateRangePickerHeaderStyle(
+                          backgroundColor: AppColors.scaffoldBlack,
+                          textAlign: TextAlign.center,
+                        ),
+                        selectionColor: AppColors.red,
+                        selectionShape: DateRangePickerSelectionShape.rectangle,
+                        selectionMode: DateRangePickerSelectionMode.single,
+                        todayHighlightColor: AppColors.deepOrange,
+                        showNavigationArrow: true,
+                        monthCellStyle: const DateRangePickerMonthCellStyle(
+                          todayTextStyle: TextStyle(
+                            color: AppColors.deepOrange
+                          ),
+                        ),
+                        headerHeight: 56,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        const Expanded(child: SizedBox()),
+                        Expanded(
+                          flex: 2,
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: RedButton(
+                                  title: 'CANCEL',
+                                  bgColor: AppColors.dividerColor,
+                                  onTap: () {
+                                    AppNav.goRouter.pop();
+                                  },
+                                ),
+                              ),
+                              const SizedBox(width: AppValues.paddingSmall),
+                              Expanded(
+                                child: RedButton(
+                                  title: 'OK',
+                                  onTap: () {
+                                    onPickedDate(_pickerController.selectedDate);
+                                    AppNav.goRouter.pop();
+                                  },
+                                ),
+                              ),
+                              const SizedBox(width: AppValues.paddingNormal),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: AppValues.paddingNormal),
+                  ],
                 ),
               ),
             ),
