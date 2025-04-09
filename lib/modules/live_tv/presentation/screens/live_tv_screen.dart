@@ -6,6 +6,7 @@ import '../../../../core/resources/app_values.dart';
 import '../../../../core/widgets/appbars/app_app_bar.dart';
 import '../../../../core/widgets/scaffold_with_appbar_and_category_tab.dart';
 import '../../../../core/widgets/tabs/category_tab.dart';
+import '../../../../core/widgets/title_and_filter_button.dart';
 import '../../../../infrastructure/navigation/app_nav.dart';
 import '../../../../infrastructure/navigation/route_names.dart';
 import '../widgets/live_tv_cover.dart';
@@ -33,32 +34,20 @@ class _LiveTvScreenState extends ConsumerState<LiveTvScreen> {
           children: [
             const LiveTvCover(),
             const SizedBox(height: AppValues.paddingNormal + 4),
-            Row(
-              children: [
-                const Expanded(
-                  child: Text(
-                    'Live TV',
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-                LiveTvFilterButton(
-                  title: 'Filters',
-                  onTap: () async {
-                    await showDialog(
-                      context: context,
-                      builder: (context) {
-                        return LiveTvFilterDialog(
-                          onCategorySelect: () {},
-                          onCountrySelect: () {},
-                        );
-                      },
+            TitleAndFilterButton(
+              title: 'Live TV',
+              buttonText: 'Filters',
+              onFilterButtonTap: () async {
+                await showDialog(
+                  context: context,
+                  builder: (context) {
+                    return LiveTvFilterDialog(
+                      onCategorySelect: () {},
+                      onCountrySelect: () {},
                     );
                   },
-                ),
-              ],
+                );
+              },
             ),
             const SizedBox(height: AppValues.paddingNormal + 4),
             ListView.builder(

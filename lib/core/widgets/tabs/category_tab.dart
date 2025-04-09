@@ -55,7 +55,7 @@ class CategoryTab extends StatelessWidget {
                         case 'Live TV':
                           AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.liveTvScreen);
                         case 'Audio':
-                          AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.audioScreen);
+                          AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.audioAlbumScreen);
                       }
                     },
                     borderRadius: BorderRadius.circular(AppValues.borderRadiusMedium),
