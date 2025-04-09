@@ -14,7 +14,7 @@ class CategoryTab extends StatelessWidget {
     /*this.onCategoryTap*/
   });
 
-  final categoryList = const ['Movies', 'TV Shows', 'Video Club', 'Live TV'];
+  final categoryList = const ['Movies', 'TV Shows', 'Video Club', 'Live TV', 'Audio'];
   final othersCategoryList = const ['Live TV', 'Audio'];
 
   @override
@@ -54,6 +54,8 @@ class CategoryTab extends StatelessWidget {
                           AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.tvShowsScreen);
                         case 'Live TV':
                           AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.liveTvScreen);
+                        case 'Audio':
+                          AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.audioScreen);
                       }
                     },
                     borderRadius: BorderRadius.circular(AppValues.borderRadiusMedium),

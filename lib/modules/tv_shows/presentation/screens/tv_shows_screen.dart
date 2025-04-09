@@ -5,6 +5,7 @@ import '../../../../core/dummys/dummy_datas.dart';
 import '../../../../core/resources/app_values.dart';
 import '../../../../core/widgets/appbars/app_app_bar.dart';
 import '../../../../core/widgets/media_lists_views/horizontal_movie_list.dart';
+import '../../../../core/widgets/scaffold_with_appbar_and_category_tab.dart';
 import '../../../../core/widgets/tabs/category_tab.dart';
 import '../../../../infrastructure/navigation/app_nav.dart';
 import '../../../../infrastructure/navigation/route_names.dart';
@@ -20,116 +21,105 @@ class TvShowsScreen extends ConsumerStatefulWidget {
 class _TvShowsScreenState extends ConsumerState<TvShowsScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const AppAppBar(title: 'TV Shows'),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 4),
-            const CategoryTab(
-              // onCategoryTap: (category) {
-              //   AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.tvShowsScreen);
-              // },
+    return ScaffoldWithAppbarAndCategoryTab(
+      appBarTitle: 'TV Shows',
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppValues.paddingNormal,
             ),
-            const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppValues.paddingNormal,
-              ),
-              child: MovieCover(
-                assetPath: 'assets/temps/movie_covers/zila.png',
-                onFavTap: () {},
-                onPlayTap: () {
-                  AppNav.goRouter.push(
-                    RouteNames.homeScreen + RouteNames.tvShowsDetailScreen,
-                    extra: getMovieList().first,
-                  );
-                },
-              ),
-            ),
-            const SizedBox(height: AppValues.paddingLarge),
-            HorizontalMovieList(
-              title: 'Critically Acclaimed TV Shows',
-              movieList: getMovieList(),
-              hideSeeAllButton: true,
-              horizontalPadding: AppValues.paddingNormal,
-              onMovieTap: (movie) {
+            child: MovieCover(
+              assetPath: 'assets/temps/movie_covers/zila.png',
+              onFavTap: () {},
+              onPlayTap: () {
                 AppNav.goRouter.push(
                   RouteNames.homeScreen + RouteNames.tvShowsDetailScreen,
-                  extra: movie,
+                  extra: getMovieList().first,
                 );
               },
             ),
-            const SizedBox(height: AppValues.paddingNormal * 2),
-            HorizontalMovieList(
-              title: 'Medical TV Dramas',
-              movieList: getMovieList(),
-              hideSeeAllButton: true,
-              horizontalPadding: AppValues.paddingNormal,
-              onMovieTap: (movie) {
-                AppNav.goRouter.push(
-                  RouteNames.homeScreen + RouteNames.tvShowsDetailScreen,
-                  extra: movie,
-                );
-              },
-            ),
-            const SizedBox(height: AppValues.paddingNormal * 2),
-            HorizontalMovieList(
-              title: 'Today’s Top Picks for You',
-              movieList: getMovieList(),
-              hideSeeAllButton: true,
-              horizontalPadding: AppValues.paddingNormal,
-              onMovieTap: (movie) {
-                AppNav.goRouter.push(
-                  RouteNames.homeScreen + RouteNames.tvShowsDetailScreen,
-                  extra: movie,
-                );
-              },
-            ),
-            const SizedBox(height: AppValues.paddingNormal * 2),
-            HorizontalMovieList(
-              title: 'US TV Shows',
-              movieList: getMovieList(),
-              hideSeeAllButton: true,
-              horizontalPadding: AppValues.paddingNormal,
-              onMovieTap: (movie) {
-                AppNav.goRouter.push(
-                  RouteNames.homeScreen + RouteNames.tvShowsDetailScreen,
-                  extra: movie,
-                );
-              },
-            ),
-            const SizedBox(height: AppValues.paddingNormal * 2),
-            HorizontalMovieList(
-              title: 'International TV Dramas',
-              movieList: getMovieList(),
-              hideSeeAllButton: true,
-              horizontalPadding: AppValues.paddingNormal,
-              onMovieTap: (movie) {
-                AppNav.goRouter.push(
-                  RouteNames.homeScreen + RouteNames.tvShowsDetailScreen,
-                  extra: movie,
-                );
-              },
-            ),
-            const SizedBox(height: AppValues.paddingNormal * 2),
-            HorizontalMovieList(
-              title: 'Familiar TV Favourites',
-              movieList: getMovieList(),
-              hideSeeAllButton: true,
-              horizontalPadding: AppValues.paddingNormal,
-              onMovieTap: (movie) {
-                AppNav.goRouter.push(
-                  RouteNames.homeScreen + RouteNames.tvShowsDetailScreen,
-                  extra: movie,
-                );
-              },
-            ),
-            const SizedBox(height: AppValues.paddingLarge),
-          ],
-        ),
+          ),
+          const SizedBox(height: AppValues.paddingLarge),
+          HorizontalMovieList(
+            title: 'Critically Acclaimed TV Shows',
+            movieList: getMovieList(),
+            hideSeeAllButton: true,
+            horizontalPadding: AppValues.paddingNormal,
+            onMovieTap: (movie) {
+              AppNav.goRouter.push(
+                RouteNames.homeScreen + RouteNames.tvShowsDetailScreen,
+                extra: movie,
+              );
+            },
+          ),
+          const SizedBox(height: AppValues.paddingNormal * 2),
+          HorizontalMovieList(
+            title: 'Medical TV Dramas',
+            movieList: getMovieList(),
+            hideSeeAllButton: true,
+            horizontalPadding: AppValues.paddingNormal,
+            onMovieTap: (movie) {
+              AppNav.goRouter.push(
+                RouteNames.homeScreen + RouteNames.tvShowsDetailScreen,
+                extra: movie,
+              );
+            },
+          ),
+          const SizedBox(height: AppValues.paddingNormal * 2),
+          HorizontalMovieList(
+            title: 'Today’s Top Picks for You',
+            movieList: getMovieList(),
+            hideSeeAllButton: true,
+            horizontalPadding: AppValues.paddingNormal,
+            onMovieTap: (movie) {
+              AppNav.goRouter.push(
+                RouteNames.homeScreen + RouteNames.tvShowsDetailScreen,
+                extra: movie,
+              );
+            },
+          ),
+          const SizedBox(height: AppValues.paddingNormal * 2),
+          HorizontalMovieList(
+            title: 'US TV Shows',
+            movieList: getMovieList(),
+            hideSeeAllButton: true,
+            horizontalPadding: AppValues.paddingNormal,
+            onMovieTap: (movie) {
+              AppNav.goRouter.push(
+                RouteNames.homeScreen + RouteNames.tvShowsDetailScreen,
+                extra: movie,
+              );
+            },
+          ),
+          const SizedBox(height: AppValues.paddingNormal * 2),
+          HorizontalMovieList(
+            title: 'International TV Dramas',
+            movieList: getMovieList(),
+            hideSeeAllButton: true,
+            horizontalPadding: AppValues.paddingNormal,
+            onMovieTap: (movie) {
+              AppNav.goRouter.push(
+                RouteNames.homeScreen + RouteNames.tvShowsDetailScreen,
+                extra: movie,
+              );
+            },
+          ),
+          const SizedBox(height: AppValues.paddingNormal * 2),
+          HorizontalMovieList(
+            title: 'Familiar TV Favourites',
+            movieList: getMovieList(),
+            hideSeeAllButton: true,
+            horizontalPadding: AppValues.paddingNormal,
+            onMovieTap: (movie) {
+              AppNav.goRouter.push(
+                RouteNames.homeScreen + RouteNames.tvShowsDetailScreen,
+                extra: movie,
+              );
+            },
+          ),
+          const SizedBox(height: AppValues.paddingLarge),
+        ],
       ),
     );
   }
