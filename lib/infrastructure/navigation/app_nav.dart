@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../modules/audio/presentation/screens/audio_album_screen.dart';
 import '../../modules/favourite/presentation/screens/favourite_screen.dart';
 import '../../modules/fire/presentation/screens/fire_screen.dart';
 import '../../modules/get_started/presentation/screens/get_started_screen.dart';
 import '../../modules/get_started/presentation/screens/nowhere_screen.dart';
 import '../../modules/get_started/presentation/screens/splash_sscreen.dart';
+import '../../modules/home/presentation/screens/home_screen.dart';
+import '../../modules/home/presentation/screens/home_with_bottom_nav.dart';
 import '../../modules/live_tv/presentation/screens/live_tv_detail_screen.dart';
 import '../../modules/live_tv/presentation/screens/live_tv_screen.dart';
 import '../../modules/movie/business/entity/movie.dart';
-import '../../modules/movie/presentation/screens/movies_screen.dart';
-import '../../modules/home/presentation/screens/home_screen.dart';
-import '../../modules/home/presentation/screens/home_with_bottom_nav.dart';
 import '../../modules/movie/presentation/screens/movie_detail_screen.dart';
+import '../../modules/movie/presentation/screens/movies_screen.dart';
 import '../../modules/profile/presentation/screens/profile_screen.dart';
 import '../../modules/servers/business/entity/server.dart';
 import '../../modules/servers/presentation/screens/add_server_screen.dart';
@@ -22,6 +23,7 @@ import '../../modules/sign_in/presentation/screens/deactivated_account_screen.da
 import '../../modules/sign_in/presentation/screens/sign_in_screen.dart';
 import '../../modules/tv_shows/presentation/screens/tv_show_detail_screen.dart';
 import '../../modules/tv_shows/presentation/screens/tv_shows_screen.dart';
+import 'app_transition.dart';
 import 'route_names.dart';
 
 class AppNav {
@@ -45,35 +47,118 @@ class AppNav {
   /// main purpose of this method is to give a fade in
   /// animation transition when navigating from one
   /// screen to another screen
-  static Route<dynamic> generateRoutes(RouteSettings settings) {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) {
-        return _getScreenByName(settings.name, settings.arguments);
-      },
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        // const begin = Offset(0.0, 1.0);
-        // const end = Offset.zero;
-        // final tween = Tween(begin: begin, end: end);
-        // final offsetAnimation = animation.drive(tween);
-        return FadeTransition(
-          alwaysIncludeSemantics: true,
-          opacity: animation,
-          child: child,
-        );
-      },
-    );
-  }
+  // static Route<dynamic> generateRoutes(RouteSettings settings) {
+  //   return PageRouteBuilder(
+  //     pageBuilder: (context, animation, secondaryAnimation) {
+  //       return _getScreenByName(settings.name, settings.arguments);
+  //     },
+  //     transitionsBuilder: (context, animation, secondaryAnimation, child) {
+  //       // const begin = Offset(0.0, 1.0);
+  //       // const end = Offset.zero;
+  //       // final tween = Tween(begin: begin, end: end);
+  //       // final offsetAnimation = animation.drive(tween);
+  //       return FadeTransition(
+  //         alwaysIncludeSemantics: true,
+  //         opacity: animation,
+  //         child: child,
+  //       );
+  //     },
+  //   );
+  // }
 
   /// This method return a widget that represent a single screen
-  static Widget _getScreenByName(String? name, Object? arguments) {
-    switch (name) {
-      case RouteNames.splashScreen:
-        return Container();
-      // case RouteNames.githubUsersScreen:
-      //   return const GithubUsersScreen();
-      default:
-        return Container();
-    }
+  // static Widget _getScreenByName(String? name, Object? arguments) {
+  //   switch (name) {
+  //     case RouteNames.splashScreen:
+  //       return Container();
+  //     // case RouteNames.githubUsersScreen:
+  //     //   return const GithubUsersScreen();
+  //     default:
+  //       return Container();
+  //   }
+  // }
+
+  /// Function to make possible page transition while navigation
+  static CustomTransitionPage<T> buildPageWithTransition<T>({
+    required GoRouterState state,
+    required Widget child,
+    AppTransition transition = AppTransition.fade,
+    Duration duration = const Duration(milliseconds: 300),
+    Curve curve = Curves.easeInOut,
+  }) {
+    return CustomTransitionPage<T>(
+      key: state.pageKey,
+      child: child,
+      transitionDuration: duration,
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        final curved = CurvedAnimation(parent: animation, curve: curve);
+
+        switch (transition) {
+          case AppTransition.slideFromBottom:
+            return SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(0, 1),
+                end: Offset.zero,
+              ).animate(curved),
+              child: child,
+            );
+
+          case AppTransition.slideFromTop:
+            return SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(0, -1),
+                end: Offset.zero,
+              ).animate(curved),
+              child: child,
+            );
+
+          case AppTransition.slideFromLeft:
+            return SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(-1, 0),
+                end: Offset.zero,
+              ).animate(curved),
+              child: child,
+            );
+
+          case AppTransition.slideFromRight:
+            return SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(1, 0),
+                end: Offset.zero,
+              ).animate(curved),
+              child: child,
+            );
+
+          case AppTransition.scale:
+            return ScaleTransition(
+              scale: Tween<double>(begin: 0.9, end: 1.0).animate(curved),
+              child: child,
+            );
+
+          case AppTransition.rotation:
+            return RotationTransition(
+              turns: Tween<double>(begin: 0.9, end: 1.0).animate(curved),
+              child: child,
+            );
+
+          case AppTransition.fadeScale:
+            return FadeTransition(
+              opacity: curved,
+              child: ScaleTransition(
+                scale: Tween<double>(begin: 0.95, end: 1.0).animate(curved),
+                child: child,
+              ),
+            );
+
+          case AppTransition.fade:
+            return FadeTransition(
+              opacity: curved,
+              child: child,
+            );
+        }
+      },
+    );
   }
 
   static final goRouter = GoRouter(
@@ -81,63 +166,73 @@ class AppNav {
     initialLocation: RouteNames.homeScreen,
     routes: [
       ..._authRoutes,
-      ..._homeRoutes,
+      ..._mainRoutes,
     ],
   );
 
   static final _authRoutes = [
     GoRoute(
       path: '/',
-      builder: (context, state) {
-        return const NowhereScreen();
-      },
+      pageBuilder: (context, state) => buildPageWithTransition(
+        state: state,
+        child: const NowhereScreen(),
+      ),
     ),
     GoRoute(
       path: RouteNames.splashScreen,
-      builder: (context, state) {
-        return const SplashScreen();
-      },
+      pageBuilder: (context, state) => buildPageWithTransition(
+        state: state,
+        child: const SplashScreen(),
+      ),
     ),
     GoRoute(
       path: RouteNames.getStartedScreen,
-      builder: (context, state) {
-        return const GetStartedScreen();
-      },
+      pageBuilder: (context, state) => buildPageWithTransition(
+        state: state,
+        child: const GetStartedScreen(),
+      ),
     ),
     GoRoute(
       path: RouteNames.signInScreen,
-      builder: (context, state) {
-        return const SignInScreen();
-      },
+      pageBuilder: (context, state) => buildPageWithTransition(
+        state: state,
+        child: const SignInScreen(),
+      ),
     ),
     GoRoute(
       path: RouteNames.serverListScreen,
-      builder: (context, state) {
-        return const ServerListScreen();
-      },
+      pageBuilder: (context, state) => buildPageWithTransition(
+        state: state,
+        child: const ServerListScreen(),
+      ),
     ),
     GoRoute(
       path: RouteNames.addServerScreen,
-      builder: (context, state) {
-        return const AddServerScreen();
-      },
+      pageBuilder: (context, state) => buildPageWithTransition(
+        state: state,
+        child: const AddServerScreen(),
+      ),
     ),
     GoRoute(
       path: RouteNames.editServerScreen,
-      builder: (context, state) {
+      pageBuilder: (context, state) {
         final server = state.extra as Server;
-        return EditServerScreen(server: server);
+        return buildPageWithTransition(
+          state: state,
+          child: EditServerScreen(server: server),
+        );
       },
     ),
     GoRoute(
       path: RouteNames.deactivatedAccountScreen,
-      builder: (context, state) {
-        return const DeactivatedAccountScreen();
-      },
+      pageBuilder: (context, state) => buildPageWithTransition(
+        state: state,
+        child: const DeactivatedAccountScreen(),
+      ),
     ),
   ];
 
-  static final List<ShellRoute> _homeRoutes = [
+  static final _mainRoutes = [
     ShellRoute(
       navigatorKey: shellNavKey,
       builder: (context, state, child) {
@@ -146,71 +241,96 @@ class AppNav {
       routes: [
         GoRoute(
           path: RouteNames.homeScreen,
-          // name: 'home',
-          builder: (context, state) {
-            return const HomeScreen();
-          },
-          routes: [
-            GoRoute(
-              path: RouteNames.moviesScreen,
-              builder: (context, state) {
-                return MoviesScreen(title: state.extra as String);
-              },
-            ),
-            GoRoute(
-              path: RouteNames.movieDetailScreen,
-              builder: (context, state) {
-                return MovieDetailScreen(movie: state.extra as Movie?);
-              },
-            ),
-            GoRoute(
-              path: RouteNames.tvShowsScreen,
-              builder: (context, state) {
-                return const TvShowsScreen();
-              },
-            ),
-            GoRoute(
-              path: RouteNames.tvShowsDetailScreen,
-              builder: (context, state) {
-                return TvShowDetailScreen(movie: state.extra as Movie?);
-              },
-            ),
-            GoRoute(
-              path: RouteNames.liveTvScreen,
-              builder: (context, state) {
-                return const LiveTvScreen();
-              },
-            ),
-            GoRoute(
-              path: RouteNames.liveTvDetailScreen,
-              builder: (context, state) {
-                return const LiveTvDetailsScreen();
-              },
-            ),
-          ],
+          pageBuilder: (context, state) => buildPageWithTransition(
+            state: state,
+            child: const HomeScreen(),
+          ),
+          routes: _homeNestedRoutes,
         ),
         GoRoute(
           path: RouteNames.fireScreen,
           // name: 'home',
-          builder: (context, state) {
-            return const FireScreen();
-          },
+          pageBuilder: (context, state) => buildPageWithTransition(
+            state: state,
+            child: const FireScreen(),
+          ),
         ),
         GoRoute(
           path: RouteNames.favouriteScreen,
           // name: 'favourite',
-          builder: (context, state) {
-            return const FavouriteScreen();
-          },
+          pageBuilder: (context, state) => buildPageWithTransition(
+            state: state,
+            child: const FavouriteScreen(),
+          ),
         ),
         GoRoute(
           path: RouteNames.profileScreen,
           // name: 'profile',
-          builder: (context, state) {
-            return const ProfileScreen();
-          },
+          pageBuilder: (context, state) => buildPageWithTransition(
+            state: state,
+            child: const ProfileScreen(),
+          ),
         ),
       ],
+    ),
+  ];
+
+  static final _homeNestedRoutes = [
+    GoRoute(
+      path: RouteNames.moviesScreen,
+      pageBuilder: (context, state) => buildPageWithTransition(
+        state: state,
+        child: MoviesScreen(title: state.extra as String),
+      ),
+    ),
+    GoRoute(
+      path: RouteNames.movieDetailScreen,
+      pageBuilder: (context, state) => buildPageWithTransition(
+        state: state,
+        child: MovieDetailScreen(movie: state.extra as Movie?),
+      ),
+    ),
+    GoRoute(
+      path: RouteNames.tvShowsScreen,
+      pageBuilder: (context, state) => buildPageWithTransition(
+        state: state,
+        child: const TvShowsScreen(),
+      ),
+    ),
+    GoRoute(
+      path: RouteNames.tvShowsDetailScreen,
+      pageBuilder: (context, state) => buildPageWithTransition(
+        state: state,
+        child: TvShowDetailScreen(movie: state.extra as Movie?),
+      ),
+    ),
+    GoRoute(
+      path: RouteNames.liveTvScreen,
+      pageBuilder: (context, state) => buildPageWithTransition(
+        state: state,
+        child: const LiveTvScreen(),
+      ),
+    ),
+    GoRoute(
+      path: RouteNames.liveTvDetailScreen,
+      pageBuilder: (context, state) => buildPageWithTransition(
+        state: state,
+        child: const LiveTvDetailsScreen(),
+      ),
+    ),
+    GoRoute(
+      path: RouteNames.audioAlbumScreen,
+      pageBuilder: (context, state) => buildPageWithTransition(
+        state: state,
+        child: const AudioAlbumScreen(),
+      ),
+    ),
+    GoRoute(
+      path: RouteNames.audioAlbumDetailScreen,
+      pageBuilder: (context, state) => buildPageWithTransition(
+        state: state,
+        child: const AudioAlbumScreen(),
+      ),
     ),
   ];
 }
