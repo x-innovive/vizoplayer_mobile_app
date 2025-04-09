@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/dummys/dummy_datas.dart';
 import '../../../../core/resources/app_values.dart';
 import '../../../../core/widgets/appbars/app_app_bar.dart';
+import '../../../../core/widgets/tabs/category_tab.dart';
 import '../../../../infrastructure/navigation/app_nav.dart';
 import '../../../../infrastructure/navigation/route_names.dart';
 import '../widgets/live_tv_cover.dart';
@@ -25,32 +26,61 @@ class _LiveTvScreenState extends ConsumerState<LiveTvScreen> {
       appBar: const AppAppBar(title: 'Live TV'),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
-        child: Padding(
-          padding: const EdgeInsets.all(AppValues.paddingNormal),
-          child: Column(
-            children: [
-              const LiveTvCover(),
-              const SizedBox(height: AppValues.paddingNormal + 4),
-              Row(
+        child: Column(
+          children: [
+            const SizedBox(height: 4),
+            const CategoryTab(
+                // onCategoryTap: (category) {
+                //   AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.tvShowsScreen);
+                // },
+                ),
+            const SizedBox(height: 16),
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppValues.paddingNormal,
+              ),
+              child: Column(
                 children: [
-                  const Expanded(
-                    child: Text(
-                      'Live TV',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 18,
+                  const LiveTvCover(),
+                  const SizedBox(height: AppValues.paddingNormal + 4),
+                  Row(
+                    children: [
+                      const Expanded(
+                        child: Text(
+                          'Live TV',
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18,
+                          ),
+                        ),
                       ),
-                    ),
+                      LiveTvFilterButton(
+                        title: 'Filters',
+                        onTap: () async {
+                          await showDialog(
+                            context: context,
+                            builder: (context) {
+                              return LiveTvFilterDialog(
+                                onCategorySelect: () {},
+                                onCountrySelect: () {},
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    ],
                   ),
-                  LiveTvFilterButton(
-                    title: 'Filters',
-                    onTap: () async {
-                      await showDialog(
-                        context: context,
-                        builder: (context) {
-                          return LiveTvFilterDialog(
-                            onCategorySelect: () {},
-                            onCountrySelect: () {},
+                  const SizedBox(height: AppValues.paddingNormal + 4),
+                  ListView.builder(
+                    itemCount: tvList.length,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return LiveTvListTile(
+                        liveTv: tvList[index],
+                        onTap: () {
+                          AppNav.goRouter.push(
+                            RouteNames.homeScreen + RouteNames.liveTvDetailScreen,
                           );
                         },
                       );
@@ -58,24 +88,8 @@ class _LiveTvScreenState extends ConsumerState<LiveTvScreen> {
                   ),
                 ],
               ),
-              const SizedBox(height: AppValues.paddingNormal + 4),
-              ListView.builder(
-                itemCount: tvList.length,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return LiveTvListTile(
-                    liveTv: tvList[index],
-                    onTap: () {
-                      AppNav.goRouter.push(
-                        RouteNames.homeScreen + RouteNames.liveTvDetailScreen,
-                      );
-                    },
-                  );
-                },
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

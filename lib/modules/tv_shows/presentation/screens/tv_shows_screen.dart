@@ -28,13 +28,10 @@ class _TvShowsScreenState extends ConsumerState<TvShowsScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 4),
-            const Padding(
-              padding: EdgeInsets.only(left: AppValues.paddingNormal),
-              child: CategoryTab(
-                // onCategoryTap: (category) {
-                //   AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.tvShowsScreen);
-                // },
-              ),
+            const CategoryTab(
+              // onCategoryTap: (category) {
+              //   AppNav.goRouter.push(RouteNames.homeScreen + RouteNames.tvShowsScreen);
+              // },
             ),
             const SizedBox(height: 16),
             Padding(

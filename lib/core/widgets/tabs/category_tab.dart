@@ -14,7 +14,7 @@ class CategoryTab extends StatelessWidget {
     /*this.onCategoryTap*/
   });
 
-  final categoryList = const ['Movies', 'TV Shows', 'Video Club'];
+  final categoryList = const ['Movies', 'TV Shows', 'Video Club', 'Live TV'];
   final othersCategoryList = const ['Live TV', 'Audio'];
 
   @override
